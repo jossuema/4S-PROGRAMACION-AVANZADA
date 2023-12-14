@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWindowsComponentes", "Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2H1-EjerciciosFormularios", "T2H1-EjerciciosFormularios\T2H1-EjerciciosFormularios.csproj", "{A155E433-CB82-4201-A19A-483917D00CE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POO", "POO\POO.csproj", "{721A8CA1-E2BD-4125-955F-47F19F5D67E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A155E433-CB82-4201-A19A-483917D00CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A155E433-CB82-4201-A19A-483917D00CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A155E433-CB82-4201-A19A-483917D00CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{721A8CA1-E2BD-4125-955F-47F19F5D67E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{721A8CA1-E2BD-4125-955F-47F19F5D67E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{721A8CA1-E2BD-4125-955F-47F19F5D67E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{721A8CA1-E2BD-4125-955F-47F19F5D67E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

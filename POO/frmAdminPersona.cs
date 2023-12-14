@@ -32,14 +32,32 @@ namespace POO
         }
         private void frmAdminPersona_Load(object sender, EventArgs e)
         {
-            cargarPersonas();
+            //cargarPersonas();
+            comboBox1.SelectedItem = "Todos";
             listar();
+            
 
         }
 
         public void listar()
         {
-            
+            if(comboBox1.SelectedItem.ToString() == "Empleado")
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = TListaEmpleado.lista;
+            }
+
+            if (comboBox1.SelectedItem.ToString() == "Todos")
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = TLista.lista;
+            }
+
+            if(comboBox1.SelectedItem.ToString() == "Consultor")
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = TListaConsultor.lista;
+            }
         }
 
         public void Nuevo()
@@ -147,6 +165,11 @@ namespace POO
         private void button3_Click(object sender, EventArgs e)
         {
             Eliminar();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listar();
         }
     }
 }

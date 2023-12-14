@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultor.cs" />
     <Compile Include="Controlador\TLista.cs" />
+    <Compile Include="Controlador\TListaEmpleado.cs" />
+    <Compile Include="Empleado.cs" />
     <Compile Include="frmEdit-Add.cs">
       <SubType>Form</SubType>
     </Compile>

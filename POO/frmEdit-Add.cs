@@ -66,9 +66,27 @@ namespace POO
             DateTime fechaNacimiento = dateTimePicker1.Value;
             string estado = cbEstado.SelectedItem.ToString();
 
-            Persona persona = new Persona(codigo, cedula, nombre, apellido, genero, fechaNacimiento, estado);
+            if(comboBox1.SelectedItem.ToString() == "Empleado")
+            {
+                double sueldo = double.Parse(textBox1.Text);
+                double anticipo = double.Parse(textBox2.Text);
+                double impuesto = double.Parse(textBox3.Text);
 
-            return persona;
+                Empleado empleado = new Empleado(codigo, cedula, nombre, apellido, genero, fechaNacimiento, estado, sueldo, anticipo, impuesto);
+                TListaEmpleado.Agregar(empleado);
+
+                return empleado;
+            }
+            else
+            {
+                double horas = double.Parse(textBox1.Text);
+                double costo = double.Parse(textBox2.Text);
+
+                Consultor consultor = new Consultor(codigo, cedula, nombre, apellido, genero, fechaNacimiento, estado, horas, costo);
+                TListaConsultor.Agregar(consultor);
+
+                return consultor;
+            }
         }
 
         public bool validar()
@@ -115,12 +133,18 @@ namespace POO
                 dateTimePicker1.Focus();
                 return false;
             }
+            if(comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione el tipo de persona");
+                comboBox1.Focus();
+                return false;
+            }
             return true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            estadoIngreso(false);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -128,5 +152,47 @@ namespace POO
             this.Close();
         }
 
+        public void estadoIngreso(bool ok)
+        {
+            label11.Visible = ok;
+            label12.Visible = ok;
+            label10.Visible = ok;
+            textBox1.Visible = ok;
+            textBox2.Visible = ok;
+            textBox3.Visible = ok;
+        }
+
+        public void setEmpleado()
+        {
+            label10.Text = "Sueldo";
+            label11.Text = "Anticipo";
+            label12.Text = "Impuesto";
+            estadoIngreso(true);
+        }
+
+        public void setConsultor()
+        {
+            label10.Text = "Horas";
+            label11.Text = "Costo";
+            estadoIngreso(true);
+            label12.Visible = false;
+            textBox3.Visible = false;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedItem.ToString() == "Empleado")
+            {
+                setEmpleado(); 
+            }
+            else if(comboBox1.SelectedItem.ToString() == "Consultor")
+            {
+                setConsultor();  
+            }
+            else
+            {
+                estadoIngreso(false);
+            }
+        }
     }
 }
