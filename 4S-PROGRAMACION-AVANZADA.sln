@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerenciaPolimorfismo", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica", "Practica\Practica.csproj", "{F7B531BE-E35F-423C-8F24-A6ACB7A15273}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T3H1-Herencia", "T3H1-Herencia\T3H1-Herencia.csproj", "{0364ACFD-B272-42F1-ACD3-FA6E35157991}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0364ACFD-B272-42F1-ACD3-FA6E35157991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0364ACFD-B272-42F1-ACD3-FA6E35157991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0364ACFD-B272-42F1-ACD3-FA6E35157991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0364ACFD-B272-42F1-ACD3-FA6E35157991}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
