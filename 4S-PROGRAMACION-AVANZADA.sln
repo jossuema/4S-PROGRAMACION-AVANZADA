@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P1H1", "P1H1\P1H1.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerenciaPolimorfismo", "..\HerenciaPolimorfismo\HerenciaPolimorfismo.csproj", "{BA14319E-5AEB-4250-A77C-18DDC1DF75CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica", "Practica\Practica.csproj", "{F7B531BE-E35F-423C-8F24-A6ACB7A15273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BA14319E-5AEB-4250-A77C-18DDC1DF75CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA14319E-5AEB-4250-A77C-18DDC1DF75CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA14319E-5AEB-4250-A77C-18DDC1DF75CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B531BE-E35F-423C-8F24-A6ACB7A15273}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
