@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AlquilerLibros" Class="DBAlquilerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=jcc;Initial Catalog=AlquilerLibros;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="AlquilerLibrosConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Autor" Member="Autor">
+    <Type Name="Autor">
+      <Column Name="id_autor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Autor_AutorLibro" Member="AutorLibro" ThisKey="id_autor" OtherKey="id_autor" Type="AutorLibro" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AutorLibro" Member="AutorLibro">
+    <Type Name="AutorLibro">
+      <Column Name="id_autor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Autor_AutorLibro" Member="Autor" ThisKey="id_autor" OtherKey="id_autor" Type="Autor" IsForeignKey="true" />
+      <Association Name="Libro_AutorLibro" Member="Libro" ThisKey="id_libro" OtherKey="id_libro" Type="Libro" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categoria" Member="Categoria">
+    <Type Name="Categoria">
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Categoria_Libro" Member="Libro" ThisKey="id_categoria" OtherKey="id_categoria" Type="Libro" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Editorial" Member="Editorial">
+    <Type Name="Editorial">
+      <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="pais" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="Editorial_Libro" Member="Libro" ThisKey="id_editorial" OtherKey="id_editorial" Type="Libro" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estudiante" Member="Estudiante">
+    <Type Name="Estudiante">
+      <Column Name="id_estudiante" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="estadocivil" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Association Name="Estudiante_Prestamo" Member="Prestamo" ThisKey="id_estudiante" OtherKey="id_estudiante" Type="Prestamo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Libro" Member="Libro">
+    <Type Name="Libro">
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="anio_publicacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="disponibilidad" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Libro_AutorLibro" Member="AutorLibro" ThisKey="id_libro" OtherKey="id_libro" Type="AutorLibro" />
+      <Association Name="Libro_PrestamoLibro" Member="PrestamoLibro" ThisKey="id_libro" OtherKey="id_libro" Type="PrestamoLibro" />
+      <Association Name="Categoria_Libro" Member="Categoria" ThisKey="id_categoria" OtherKey="id_categoria" Type="Categoria" IsForeignKey="true" />
+      <Association Name="Editorial_Libro" Member="Editorial" ThisKey="id_editorial" OtherKey="id_editorial" Type="Editorial" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prestamo" Member="Prestamo">
+    <Type Name="Prestamo">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fecha_entraga" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_tentativa" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fecha_prestamo" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_estudiante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Prestamo_PrestamoLibro" Member="PrestamoLibro" ThisKey="id_prestamo" OtherKey="id_prestamo" Type="PrestamoLibro" />
+      <Association Name="Estudiante_Prestamo" Member="Estudiante" ThisKey="id_estudiante" OtherKey="id_estudiante" Type="Estudiante" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PrestamoLibro" Member="PrestamoLibro">
+    <Type Name="PrestamoLibro">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_libro" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Libro_PrestamoLibro" Member="Libro" ThisKey="id_libro" OtherKey="id_libro" Type="Libro" IsForeignKey="true" />
+      <Association Name="Prestamo_PrestamoLibro" Member="Prestamo" ThisKey="id_prestamo" OtherKey="id_prestamo" Type="Prestamo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.CP_ListarAutor" Method="CP_ListarAutor">
+    <Parameter Name="val" Type="System.String" DbType="VarChar(40)" />
+    <ElementType Name="CP_ListarAutorResult">
+      <Column Name="id_autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_EliminararAutor" Method="CP_EliminararAutor">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarAutor" Method="CP_InsertarAutor">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="est" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="nom" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="ape" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="sex" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="fec" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ModificarAutor" Method="CP_ModificarAutor">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="est" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="nom" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="ape" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="sex" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="fec" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
