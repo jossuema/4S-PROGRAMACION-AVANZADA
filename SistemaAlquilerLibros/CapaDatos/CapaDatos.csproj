@@ -49,7 +49,11 @@
     </Compile>
     <Compile Include="DatosExcepciones.cs" />
     <Compile Include="Gestion\AutorCD.cs" />
+    <Compile Include="Gestion\CategoriaCD.cs" />
+    <Compile Include="Gestion\EditorialCD.cs" />
     <Compile Include="Gestion\EstudianteCD.cs" />
+    <Compile Include="Gestion\LibroCD.cs" />
+    <Compile Include="Gestion\PrestamoCD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

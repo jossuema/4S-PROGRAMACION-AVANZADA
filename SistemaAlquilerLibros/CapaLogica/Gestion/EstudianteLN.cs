@@ -19,7 +19,7 @@ namespace CapaLogica.Gestion
                 List<CP_ListarEstudiantesResult> auxLista = EstudianteCD.ListarEstudianteFiltro(val);
                 foreach (CP_ListarEstudiantesResult op in auxLista)
                 {
-                    oe = new CapaEntidades.Gestion.Estudiante(op.id_estudiante, op.estado, op.nombre, op.apellido, op.fecha_nacimiento, op.sexo, op.estado_civil, op.estado);
+                    oe = new CapaEntidades.Gestion.Estudiante(op.id_estudiante, op.cedula, op.nombre, op.apellido, op.fecha_nacimiento, op.sexo, op.estado_civil, op.estado);
                     ListaEstudiantes.Add(oe);
                 }
                 return ListaEstudiantes;
@@ -29,6 +29,42 @@ namespace CapaLogica.Gestion
                 throw new LogicaExcepciones("Error listar estudiante en CD", ex);
             }
 
+        }
+
+        public void InsertarEstudiante(CapaEntidades.Gestion.Estudiante estudiante)
+        {
+            try
+            {
+                EstudianteCD.InsertarEstudiante(estudiante);
+            }
+            catch (Exception ex)
+            {
+                throw new LogicaExcepciones("Error insertar estudiante en CD", ex);
+            }
+        }
+
+        public void ModificarEstudiante(CapaEntidades.Gestion.Estudiante estudiante)
+        {
+            try
+            {
+                EstudianteCD.ModificarEstudiante(estudiante);
+            }
+            catch (Exception ex)
+            {
+                throw new LogicaExcepciones("Error actualizar estudiante en CD", ex);
+            }
+        }
+
+        public void EliminarEstudiante(int id)
+        {
+            try
+            {
+                EstudianteCD.EliminarEstudiante(id);
+            }
+            catch (Exception ex)
+            {
+                throw new LogicaExcepciones("Error eliminar estudiante en CD", ex);
+            }
         }
     }
 }

@@ -84,5 +84,25 @@ namespace CapaDatos.Gestion
                 bd = null;
             }
         }
+
+        public static List<CP_BuscarEstudianteResult> BuscarEstudiante(int id)
+        {
+            BibliotecaDataContext bd = null;
+            try
+            {
+                using (bd = new BibliotecaDataContext())
+                {
+                    return bd.CP_BuscarEstudiante(id).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new DatosExcepciones("Error buscar estudiante en CD", ex);
+            }
+            finally
+            {
+                bd = null;
+            }
+        }
     }
 }

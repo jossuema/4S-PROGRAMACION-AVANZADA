@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gestion\CategoriaLN.cs" />
+    <Compile Include="Gestion\EditorialLN.cs" />
     <Compile Include="Gestion\EstudianteLN.cs" />
+    <Compile Include="Gestion\LibroLN.cs" />
+    <Compile Include="Gestion\PrestamoLN.cs" />
     <Compile Include="LogicaExcepciones.cs" />
     <Compile Include="Gestion\AutorLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

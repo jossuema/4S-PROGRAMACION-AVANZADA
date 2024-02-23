@@ -18,19 +18,18 @@ namespace capavista.Formularios
             InitializeComponent();
         }
 
-        public bool Editar = false;
         public CapaEntidades.Gestion.Autor autor = null;
 
         public void setDatos(CapaEntidades.Gestion.Autor autor)
         {
             this.autor = autor;
             txtID.Text = autor.Id_autor.ToString();
+            txtID.Enabled = false;
             txtNombre.Text = autor.Nombre;
             txtApellido.Text = autor.Apellido;
             cbSexo.Text = autor.Sexo.ToString();
             txtEstado.Text = autor.Estado;
             dateTimePicker1.Value = autor.Fecha_nacimiento;
-            this.Editar = true;
         }
 
         public bool validar()

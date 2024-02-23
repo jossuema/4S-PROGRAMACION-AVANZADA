@@ -67,14 +67,14 @@ namespace CapaDatos.Gestion
                 DB = null;
             }
         }
-        public static void EliminarAutor(CapaEntidades.Gestion.Autor oa)
+        public static void EliminarAutor(int oa)
         {
             BibliotecaDataContext DB = null;
             try
             {
                 using (DB = new BibliotecaDataContext())
                 {
-                    DB.CP_EliminarAutor(oa.Id_autor);
+                    DB.CP_EliminarAutor(oa);
                 }
             }
             catch (Exception ex)
@@ -86,6 +86,27 @@ namespace CapaDatos.Gestion
                 DB = null;
             }
         }
+        //Buscar autor
+        public static List<CP_BuscarAutorResult> BuscarAutor(int val)
+        {
+            BibliotecaDataContext DB = null;
+            try
+            {
+                using (DB = new BibliotecaDataContext())
+                {
+                    return DB.CP_BuscarAutor(val).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new DatosExcepciones("Error buscar autor en CD", ex);
+            }
+            finally
+            {
+                DB = null;
+            }
+        }
+
 
 
 

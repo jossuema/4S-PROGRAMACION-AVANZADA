@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasesPersonalizadas\LibroListar.cs" />
+    <Compile Include="ClasesPersonalizadas\PrestamoListar.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Gestion\Autor.cs" />
+    <Compile Include="Gestion\Categoria.cs" />
+    <Compile Include="Gestion\Editorial.cs" />
     <Compile Include="Gestion\Estudiante.cs" />
+    <Compile Include="Gestion\Libro.cs" />
+    <Compile Include="Gestion\Prestamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

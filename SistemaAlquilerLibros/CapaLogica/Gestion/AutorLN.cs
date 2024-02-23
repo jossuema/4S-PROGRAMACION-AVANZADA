@@ -56,7 +56,7 @@ namespace CapaLogica.Gestion
             }
         }
 
-        public void EliminarAutor(CapaEntidades.Gestion.Autor id)
+        public void EliminarAutor(int id)
         {
             try
             {

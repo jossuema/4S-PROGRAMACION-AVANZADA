@@ -203,11 +203,6 @@
       <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.CP_ListarLibrosDisponibles" Method="CP_ListarLibrosDisponibles">
-    <ElementType Name="CP_ListarLibrosDisponiblesResult">
-      <Column Name="CantidadLibrosDisponibles" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.CP_ListarLibrosCategoria" Method="CP_ListarLibrosCategoria">
     <ElementType Name="CP_ListarLibrosCategoriaResult">
       <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -238,6 +233,214 @@
       <Column Name="Categoria" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Editorial" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ActualizarLibro" Method="CP_ActualizarLibro">
+    <Parameter Name="id_libro" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="anio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="tipo" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="id_categoria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_editorial" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ActualizarPrestamo" Method="CP_ActualizarPrestamo">
+    <Parameter Name="id_prestamo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="fecha_entrega" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fecha_tentativa" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fecha_devolucion" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="id_estudiante" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarAutorLibro" Method="CP_EliminarAutorLibro">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarLibro" Method="CP_EliminarLibro">
+    <Parameter Name="id_libro" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarLibroAutor" Method="CP_EliminarLibroAutor">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarLibroPrestamo" Method="CP_EliminarLibroPrestamo">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarPrestamo" Method="CP_EliminarPrestamo">
+    <Parameter Name="id_prestamo" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarPrestamoLibro" Method="CP_EliminarPrestamoLibro">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarAutorLibro" Method="CP_InsertarAutorLibro">
+    <Parameter Name="id_autor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_libro" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarLibro" Method="CP_InsertarLibro">
+    <Parameter Name="id_libro" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="anio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="tipo" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="id_categoria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_editorial" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarPrestamo" Method="CP_InsertarPrestamo">
+    <Parameter Name="id_prestamo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="estado" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="fecha_entrega" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fecha_tentativa" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fecha_devolucion" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="id_estudiante" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_InsertarPrestamoLibro" Method="CP_InsertarPrestamoLibro">
+    <Parameter Name="id_prestamo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_libro" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_ListarAutorLibro" Method="CP_ListarAutorLibro">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_ListarAutorLibroResult">
+      <Column Name="id_autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarLibroAutor" Method="CP_ListarLibroAutor">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_ListarLibroAutorResult">
+      <Column Name="id_autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarLibroPrestamo" Method="CP_ListarLibroPrestamo">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_ListarLibroPrestamoResult">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarLibros" Method="CP_ListarLibros">
+    <Parameter Name="filtro" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="CP_ListarLibrosResult">
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="anio_publicacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPrestamoLibro" Method="CP_ListarPrestamoLibro">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_ListarPrestamoLibroResult">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPrestamos" Method="CP_ListarPrestamos">
+    <Parameter Name="filtro" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="CP_ListarPrestamosResult">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_entrega" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_tentativa" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_devolucion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id_estudiante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarPrestamosFecha" Method="CP_ListarPrestamosFecha">
+    <Parameter Name="filtro" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CP_ListarPrestamosFechaResult">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_entrega" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_tentativa" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_devolucion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id_estudiante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_BuscarAutor" Method="CP_BuscarAutor">
+    <Parameter Name="clave" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_BuscarAutorResult">
+      <Column Name="id_autor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_BuscarCategoria" Method="CP_BuscarCategoria">
+    <Parameter Name="clave" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_BuscarCategoriaResult">
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_BuscarEditorial" Method="CP_BuscarEditorial">
+    <Parameter Name="clave" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_BuscarEditorialResult">
+      <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="pais" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_BuscarEstudiante" Method="CP_BuscarEstudiante">
+    <Parameter Name="clave" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_BuscarEstudianteResult">
+      <Column Name="id_estudiante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="estado_civil" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_BuscarLibro" Method="CP_BuscarLibro">
+    <Parameter Name="clave" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_BuscarLibroResult">
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="anio_publicacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_BuscarPrestamo" Method="CP_BuscarPrestamo">
+    <Parameter Name="clave" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CP_BuscarPrestamoResult">
+      <Column Name="id_prestamo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_entrega" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_tentativa" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="fecha_devolucion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id_estudiante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CP_ListarLibrosDisponibles" Method="CP_ListarLibrosDisponibles">
+    <ElementType Name="CP_ListarLibrosDisponiblesResult">
+      <Column Name="id_libro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="anio_publicacion" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="id_categoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

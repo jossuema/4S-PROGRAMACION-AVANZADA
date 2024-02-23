@@ -66,7 +66,7 @@ namespace capavista.Formularios
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show("Error al intentar abrir el formulario de autor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -102,7 +102,7 @@ namespace capavista.Formularios
             {
                 if(dtgProducto.SelectedRows.Count > 0)
                 {
-                    ln.EliminarAutor((CapaEntidades.Gestion.Autor)dtgProducto.SelectedRows[0].DataBoundItem);
+                    ln.EliminarAutor(((CapaEntidades.Gestion.Autor)dtgProducto.SelectedRows[0].DataBoundItem).Id_autor);
                     dtgProducto.DataSource = ln.ViewAutorFiltro("");
                 }
                 else

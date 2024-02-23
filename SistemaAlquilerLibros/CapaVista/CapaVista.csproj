@@ -67,11 +67,71 @@
     <Compile Include="Formularios\frmAdminAutor.Designer.cs">
       <DependentUpon>frmAdminAutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAdminCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminCategoria.Designer.cs">
+      <DependentUpon>frmAdminCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAdminEditorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminEditorial.Designer.cs">
+      <DependentUpon>frmAdminEditorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAdminEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminEstudiante.Designer.cs">
+      <DependentUpon>frmAdminEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAdminLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminLibro.Designer.cs">
+      <DependentUpon>frmAdminLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAdminPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminPrestamo.Designer.cs">
+      <DependentUpon>frmAdminPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmAutor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmAutor.Designer.cs">
       <DependentUpon>frmAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCategoria.Designer.cs">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEditorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEditorial.Designer.cs">
+      <DependentUpon>frmEditorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEstudiante.Designer.cs">
+      <DependentUpon>frmEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLibro.Designer.cs">
+      <DependentUpon>frmLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPrestado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPrestado.Designer.cs">
+      <DependentUpon>frmPrestado.cs</DependentUpon>
     </Compile>
     <Compile Include="Seguridad\frmLogin.cs">
       <SubType>Form</SubType>
@@ -91,8 +151,38 @@
     <EmbeddedResource Include="Formularios\frmAdminAutor.resx">
       <DependentUpon>frmAdminAutor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminCategoria.resx">
+      <DependentUpon>frmAdminCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminEditorial.resx">
+      <DependentUpon>frmAdminEditorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminEstudiante.resx">
+      <DependentUpon>frmAdminEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminLibro.resx">
+      <DependentUpon>frmAdminLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminPrestamo.resx">
+      <DependentUpon>frmAdminPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAutor.resx">
       <DependentUpon>frmAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCategoria.resx">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEditorial.resx">
+      <DependentUpon>frmEditorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEstudiante.resx">
+      <DependentUpon>frmEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLibro.resx">
+      <DependentUpon>frmLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPrestado.resx">
+      <DependentUpon>frmPrestado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

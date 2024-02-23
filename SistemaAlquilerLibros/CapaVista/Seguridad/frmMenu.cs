@@ -30,5 +30,53 @@ namespace capavista
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
+
+        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminCategoria frm = new frmAdminCategoria();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void estudianteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminEstudiante frm = new frmAdminEstudiante();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void editorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminEditorial frm = new frmAdminEditorial();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void categoriaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAdminCategoria frm = new frmAdminCategoria();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void libroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminLibro frm = new frmAdminLibro();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void prestamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminPrestamo frm = new frmAdminPrestamo();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }
