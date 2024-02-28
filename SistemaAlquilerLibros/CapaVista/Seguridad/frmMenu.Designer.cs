@@ -43,10 +43,11 @@
             this.estudianteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prestamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.autorLibroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.autorLibroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bajaLibrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +108,8 @@
             this.autorToolStripMenuItem,
             this.categoriaToolStripMenuItem,
             this.editorialToolStripMenuItem,
-            this.libroToolStripMenuItem});
+            this.libroToolStripMenuItem,
+            this.bajaLibrosToolStripMenuItem});
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.gestionToolStripMenuItem.Text = "Gestion";
@@ -172,6 +174,13 @@
             this.categoriaToolStripMenuItem1.Text = "Categoria";
             this.categoriaToolStripMenuItem1.Click += new System.EventHandler(this.categoriaToolStripMenuItem1_Click);
             // 
+            // autorLibroToolStripMenuItem
+            // 
+            this.autorLibroToolStripMenuItem.Name = "autorLibroToolStripMenuItem";
+            this.autorLibroToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.autorLibroToolStripMenuItem.Text = "Autor Libro";
+            this.autorLibroToolStripMenuItem.Click += new System.EventHandler(this.autorLibroToolStripMenuItem_Click);
+            // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
@@ -193,12 +202,12 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // autorLibroToolStripMenuItem
+            // bajaLibrosToolStripMenuItem
             // 
-            this.autorLibroToolStripMenuItem.Name = "autorLibroToolStripMenuItem";
-            this.autorLibroToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.autorLibroToolStripMenuItem.Text = "Autor Libro";
-            this.autorLibroToolStripMenuItem.Click += new System.EventHandler(this.autorLibroToolStripMenuItem_Click);
+            this.bajaLibrosToolStripMenuItem.Name = "bajaLibrosToolStripMenuItem";
+            this.bajaLibrosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.bajaLibrosToolStripMenuItem.Text = "Baja Libros";
+            this.bajaLibrosToolStripMenuItem.Click += new System.EventHandler(this.bajaLibrosToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -241,5 +250,6 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem autorLibroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bajaLibrosToolStripMenuItem;
     }
 }

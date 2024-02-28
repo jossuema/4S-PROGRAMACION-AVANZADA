@@ -78,7 +78,7 @@ namespace CapaLogica.Gestion
             Dictionary<int, string> lista = new Dictionary<int, string>();
             try
             {
-                var libros = CapaDatos.Gestion.LibroCD.ListarLibroFiltro("");
+                var libros = CapaDatos.Gestion.LibroCD.ListarLibrosDisponibles();
                 foreach (var item in libros)
                 {
                     lista.Add(item.id_libro, item.id_libro + ". " + item.nombre + " Estado:" + item.estado);

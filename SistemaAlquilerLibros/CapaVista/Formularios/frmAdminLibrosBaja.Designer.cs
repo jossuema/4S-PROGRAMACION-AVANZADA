@@ -1,6 +1,6 @@
 ﻿namespace capavista.Formularios
 {
-    partial class frmAdminLibro
+    partial class frmAdminLibrosBaja
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminLibro));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminLibrosBaja));
             this.dtgProducto = new System.Windows.Forms.DataGridView();
+            this.idBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaBaja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.motivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.decrementoStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,15 +48,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.id_autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_civil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProducto)).BeginInit();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -60,33 +57,30 @@
             // dtgProducto
             // 
             this.dtgProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_autor,
-            this.Cedula,
-            this.nombre,
-            this.tipo,
-            this.sexo,
-            this.fecha_nacimiento,
-            this.Estado_civil,
-            this.Estado,
-            this.stock});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgProducto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.idBaja,
+            this.nombreLibro,
+            this.estadoLibro,
+            this.fechaBaja,
+            this.motivo,
+            this.decrementoStock});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgProducto.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgProducto.Location = new System.Drawing.Point(78, 48);
             this.dtgProducto.Margin = new System.Windows.Forms.Padding(4);
@@ -95,10 +89,64 @@
             this.dtgProducto.ReadOnly = true;
             this.dtgProducto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dtgProducto.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgProducto.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgProducto.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dtgProducto.Size = new System.Drawing.Size(722, 373);
-            this.dtgProducto.TabIndex = 28;
+            this.dtgProducto.TabIndex = 24;
+            // 
+            // idBaja
+            // 
+            this.idBaja.DataPropertyName = "idBaja";
+            this.idBaja.HeaderText = "ID";
+            this.idBaja.MinimumWidth = 6;
+            this.idBaja.Name = "idBaja";
+            this.idBaja.ReadOnly = true;
+            this.idBaja.Width = 55;
+            // 
+            // nombreLibro
+            // 
+            this.nombreLibro.DataPropertyName = "nombreLibro";
+            this.nombreLibro.HeaderText = "Nombre Libro";
+            this.nombreLibro.MinimumWidth = 6;
+            this.nombreLibro.Name = "nombreLibro";
+            this.nombreLibro.ReadOnly = true;
+            this.nombreLibro.Width = 128;
+            // 
+            // estadoLibro
+            // 
+            this.estadoLibro.DataPropertyName = "estadoLibro";
+            this.estadoLibro.HeaderText = "Estado Libro";
+            this.estadoLibro.MinimumWidth = 6;
+            this.estadoLibro.Name = "estadoLibro";
+            this.estadoLibro.ReadOnly = true;
+            this.estadoLibro.Width = 122;
+            // 
+            // fechaBaja
+            // 
+            this.fechaBaja.DataPropertyName = "fechaBaja";
+            this.fechaBaja.HeaderText = "Fecha Baja";
+            this.fechaBaja.MinimumWidth = 6;
+            this.fechaBaja.Name = "fechaBaja";
+            this.fechaBaja.ReadOnly = true;
+            this.fechaBaja.Width = 113;
+            // 
+            // motivo
+            // 
+            this.motivo.DataPropertyName = "motivo";
+            this.motivo.HeaderText = "Motivo";
+            this.motivo.MinimumWidth = 6;
+            this.motivo.Name = "motivo";
+            this.motivo.ReadOnly = true;
+            this.motivo.Width = 87;
+            // 
+            // decrementoStock
+            // 
+            this.decrementoStock.DataPropertyName = "decrementoStock";
+            this.decrementoStock.HeaderText = "Decremento Stock";
+            this.decrementoStock.MinimumWidth = 6;
+            this.decrementoStock.Name = "decrementoStock";
+            this.decrementoStock.ReadOnly = true;
+            this.decrementoStock.Width = 162;
             // 
             // panel1
             // 
@@ -109,7 +157,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(722, 48);
-            this.panel1.TabIndex = 25;
+            this.panel1.TabIndex = 21;
             // 
             // txtBuscar
             // 
@@ -142,7 +190,7 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
             this.statusStrip1.Size = new System.Drawing.Size(722, 29);
-            this.statusStrip1.TabIndex = 27;
+            this.statusStrip1.TabIndex = 23;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblEstado
@@ -164,7 +212,7 @@
             this.tlsBarraPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tlsBarraPrincipal.Name = "tlsBarraPrincipal";
             this.tlsBarraPrincipal.Size = new System.Drawing.Size(78, 450);
-            this.tlsBarraPrincipal.TabIndex = 26;
+            this.tlsBarraPrincipal.TabIndex = 22;
             this.tlsBarraPrincipal.Text = "toolStrip1";
             // 
             // toolStripButton1
@@ -200,88 +248,7 @@
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // id_autor
-            // 
-            this.id_autor.DataPropertyName = "id_libro";
-            this.id_autor.HeaderText = "ID";
-            this.id_autor.MinimumWidth = 6;
-            this.id_autor.Name = "id_autor";
-            this.id_autor.ReadOnly = true;
-            this.id_autor.Width = 55;
-            // 
-            // Cedula
-            // 
-            this.Cedula.DataPropertyName = "estado";
-            this.Cedula.HeaderText = "Estado";
-            this.Cedula.MinimumWidth = 6;
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            this.Cedula.Width = 90;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "anio_publicacion";
-            this.nombre.HeaderText = "Año publicacion";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 143;
-            // 
-            // tipo
-            // 
-            this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.MinimumWidth = 6;
-            this.tipo.Name = "tipo";
-            this.tipo.ReadOnly = true;
-            this.tipo.Width = 70;
-            // 
-            // sexo
-            // 
-            this.sexo.DataPropertyName = "nombre";
-            this.sexo.HeaderText = "Nombre";
-            this.sexo.MinimumWidth = 6;
-            this.sexo.Name = "sexo";
-            this.sexo.ReadOnly = true;
-            this.sexo.Width = 97;
-            // 
-            // fecha_nacimiento
-            // 
-            this.fecha_nacimiento.DataPropertyName = "categoria";
-            this.fecha_nacimiento.HeaderText = "Categoria";
-            this.fecha_nacimiento.MinimumWidth = 6;
-            this.fecha_nacimiento.Name = "fecha_nacimiento";
-            this.fecha_nacimiento.ReadOnly = true;
-            this.fecha_nacimiento.Width = 110;
-            // 
-            // Estado_civil
-            // 
-            this.Estado_civil.DataPropertyName = "editorial";
-            this.Estado_civil.HeaderText = "Editorial";
-            this.Estado_civil.MinimumWidth = 6;
-            this.Estado_civil.Name = "Estado_civil";
-            this.Estado_civil.ReadOnly = true;
-            this.Estado_civil.Width = 99;
-            // 
-            // Estado
-            // 
-            this.Estado.DataPropertyName = "Autores";
-            this.Estado.HeaderText = "Autores";
-            this.Estado.MinimumWidth = 6;
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 96;
-            // 
-            // stock
-            // 
-            this.stock.DataPropertyName = "stock";
-            this.stock.HeaderText = "Stock";
-            this.stock.MinimumWidth = 6;
-            this.stock.Name = "stock";
-            this.stock.ReadOnly = true;
-            this.stock.Width = 80;
-            // 
-            // frmAdminLibro
+            // frmAdminLibrosBaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -290,8 +257,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tlsBarraPrincipal);
-            this.Name = "frmAdminLibro";
-            this.Text = "frmAdminLibro";
+            this.Name = "frmAdminLibrosBaja";
+            this.Text = "frmAdminLibrosBaja";
             ((System.ComponentModel.ISupportInitialize)(this.dtgProducto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -316,14 +283,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_autor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_nacimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado_civil;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idBaja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreLibro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoLibro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaBaja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn motivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn decrementoStock;
     }
 }

@@ -43,6 +43,9 @@ namespace CapaLogica.Gestion
                 CapaDatos.Gestion.PrestamoCD.InsertarPrestamo(op);
                 foreach (var item in codigosLibros)
                 {
+                    var libro = CapaDatos.Gestion.LibroCD.BuscarLibro(item).FirstOrDefault();
+                    var libroo = new CapaEntidades.Gestion.Libro(libro.id_libro, libro.estado, libro.anio_publicacion, libro.tipo, libro.nombre, libro.id_categoria, libro.id_editorial, libro.stock - 1);
+                    CapaDatos.Gestion.LibroCD.ModificarLibro(libroo);
                     CapaDatos.Gestion.PrestamoCD.InsertarPrestamoLibro(op.Id_prestamo, item);
                 }
             }
@@ -108,7 +111,10 @@ namespace CapaLogica.Gestion
                 List<CapaDatos.CP_ListarEstudiantesResult> listaEstudiantesCD = CapaDatos.Gestion.EstudianteCD.ListarEstudianteFiltro("");
                 foreach (CP_ListarEstudiantesResult item in listaEstudiantesCD)
                 {
-                    lista.Add(item.id_estudiante, item.cedula+", "+item.nombre+" "+item.apellido);
+                    if (item.estado == "Activo")
+                    {
+                        lista.Add(item.id_estudiante, item.cedula + ", " + item.nombre + " " + item.apellido);
+                    }
                 }
                 return lista;
             }

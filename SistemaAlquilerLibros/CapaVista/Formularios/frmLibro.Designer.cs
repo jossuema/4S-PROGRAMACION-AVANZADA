@@ -50,6 +50,8 @@
             this.lbSelec = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -187,7 +189,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(39, 345);
+            this.label9.Location = new System.Drawing.Point(39, 408);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 16);
             this.label9.TabIndex = 15;
@@ -197,14 +199,14 @@
             // 
             this.lbNoSelec.FormattingEnabled = true;
             this.lbNoSelec.ItemHeight = 16;
-            this.lbNoSelec.Location = new System.Drawing.Point(86, 345);
+            this.lbNoSelec.Location = new System.Drawing.Point(86, 408);
             this.lbNoSelec.Name = "lbNoSelec";
             this.lbNoSelec.Size = new System.Drawing.Size(137, 148);
             this.lbNoSelec.TabIndex = 16;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(229, 345);
+            this.button1.Location = new System.Drawing.Point(229, 408);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 17;
@@ -214,7 +216,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(229, 383);
+            this.button2.Location = new System.Drawing.Point(229, 446);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 35);
             this.button2.TabIndex = 18;
@@ -226,14 +228,14 @@
             // 
             this.lbSelec.FormattingEnabled = true;
             this.lbSelec.ItemHeight = 16;
-            this.lbSelec.Location = new System.Drawing.Point(310, 345);
+            this.lbSelec.Location = new System.Drawing.Point(310, 408);
             this.lbSelec.Name = "lbSelec";
             this.lbSelec.Size = new System.Drawing.Size(138, 148);
             this.lbSelec.TabIndex = 19;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(148, 515);
+            this.button3.Location = new System.Drawing.Point(148, 578);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 29);
             this.button3.TabIndex = 20;
@@ -243,7 +245,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(246, 515);
+            this.button4.Location = new System.Drawing.Point(246, 578);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 29);
             this.button4.TabIndex = 21;
@@ -251,11 +253,29 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(30, 348);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Stock:";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(142, 345);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(306, 22);
+            this.txtStock.TabIndex = 23;
+            // 
             // frmLibro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 571);
+            this.ClientSize = new System.Drawing.Size(489, 660);
+            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.lbSelec);
@@ -310,5 +330,7 @@
         private System.Windows.Forms.ListBox lbSelec;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtStock;
     }
 }

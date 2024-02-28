@@ -65,6 +65,7 @@ namespace capavista.Formularios
             cbCategoria.SelectedValue = libro.IdCategoria;
             cbEditorial.SelectedValue = libro.IdEditorial;
             dtpAnio.Value = libro.Anio_publicacion; 
+            txtStock.Text = libro.Stock.ToString();
 
             foreach (var item in autores)
             {
@@ -133,6 +134,7 @@ namespace capavista.Formularios
             libro.IdCategoria = ((KeyValuePair<int, string>)cbCategoria.SelectedItem).Key;
             libro.IdEditorial = ((KeyValuePair<int, string>)cbEditorial.SelectedItem).Key;
             libro.Anio_publicacion = dtpAnio.Value;
+            libro.Stock = int.Parse(txtStock.Text);
             return libro;
         }
 
@@ -211,6 +213,11 @@ namespace capavista.Formularios
             if(autoresSelec.Count == 0)
             {
                 MessageBox.Show("Seleccione al menos un autor");
+                return false;
+            }
+            if(txtStock.Text == "")
+            {
+                MessageBox.Show("Ingrese el stock");
                 return false;
             }
             return true;

@@ -13,6 +13,7 @@ namespace CapaEntidades.Gestion
         public DateTime Anio_publicacion { get; set; }
         public string Tipo { get; set; }
         public string Nombre { get; set; }
+        public int Stock { get; set; }
         public int IdCategoria { get; set; }
         public int IdEditorial { get; set; }
 
@@ -20,7 +21,7 @@ namespace CapaEntidades.Gestion
         {
         }
 
-        public Libro(int idLibro, string estado, DateTime anio_publicacion, string tipo, string nombre, int idCategoria, int idEditorial)
+        public Libro(int idLibro, string estado, DateTime anio_publicacion, string tipo, string nombre, int idCategoria, int idEditorial, int stock)
         {
             IdLibro = idLibro;
             Estado = estado;
@@ -29,6 +30,7 @@ namespace CapaEntidades.Gestion
             Nombre = nombre;
             IdCategoria = idCategoria;
             IdEditorial = idEditorial;
+            Stock = stock;
         }
     }
 }

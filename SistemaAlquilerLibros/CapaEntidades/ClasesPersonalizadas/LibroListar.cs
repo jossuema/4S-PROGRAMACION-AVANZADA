@@ -16,12 +16,13 @@ namespace CapaEntidades.ClasesPersonalizadas
         public string Categoria { get; set; }
         public string Editorial { get; set; }
         public String Autores { get; set; }
+        public int Stock { get; set; }
 
         public LibroListar()
         {
         }
 
-        public LibroListar(int id_libro, string estado, DateTime anio_publicacion, string tipo, string nombre, string categoria, string editorial, string autores)
+        public LibroListar(int id_libro, string estado, DateTime anio_publicacion, string tipo, string nombre, string categoria, string editorial, string autores, int stock)
         {
             this.Id_libro = id_libro;
             this.Estado = estado;
@@ -31,6 +32,7 @@ namespace CapaEntidades.ClasesPersonalizadas
             this.Categoria = categoria;
             this.Editorial = editorial;
             this.Autores = autores;
+            this.Stock = stock;
         }
     }
 }

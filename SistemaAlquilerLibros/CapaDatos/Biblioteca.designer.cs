@@ -45,15 +45,18 @@ namespace CapaDatos
     partial void InsertEstudiante(Estudiante instance);
     partial void UpdateEstudiante(Estudiante instance);
     partial void DeleteEstudiante(Estudiante instance);
-    partial void InsertLibro(Libro instance);
-    partial void UpdateLibro(Libro instance);
-    partial void DeleteLibro(Libro instance);
     partial void InsertPrestamo(Prestamo instance);
     partial void UpdatePrestamo(Prestamo instance);
     partial void DeletePrestamo(Prestamo instance);
     partial void InsertPrestamo_Libro(Prestamo_Libro instance);
     partial void UpdatePrestamo_Libro(Prestamo_Libro instance);
     partial void DeletePrestamo_Libro(Prestamo_Libro instance);
+    partial void InsertHistorialBaja(HistorialBaja instance);
+    partial void UpdateHistorialBaja(HistorialBaja instance);
+    partial void DeleteHistorialBaja(HistorialBaja instance);
+    partial void InsertLibro(Libro instance);
+    partial void UpdateLibro(Libro instance);
+    partial void DeleteLibro(Libro instance);
     #endregion
 		
 		public BibliotecaDataContext() : 
@@ -126,14 +129,6 @@ namespace CapaDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<Libro> Libros
-		{
-			get
-			{
-				return this.GetTable<Libro>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Prestamo> Prestamos
 		{
 			get
@@ -147,6 +142,22 @@ namespace CapaDatos
 			get
 			{
 				return this.GetTable<Prestamo_Libro>();
+			}
+		}
+		
+		public System.Data.Linq.Table<HistorialBaja> HistorialBajas
+		{
+			get
+			{
+				return this.GetTable<HistorialBaja>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Libro> Libros
+		{
+			get
+			{
+				return this.GetTable<Libro>();
 			}
 		}
 		
@@ -283,13 +294,6 @@ namespace CapaDatos
 			return ((ISingleResult<CP_ListarVistaLibro2Result>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarLibro")]
-		public int CP_ActualizarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarPrestamo")]
 		public int CP_ActualizarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_prestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_entrega, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_tentativa, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_devolucion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante)
 		{
@@ -343,13 +347,6 @@ namespace CapaDatos
 		public int CP_InsertarAutorLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor, id_libro);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarLibro")]
-		public int CP_InsertarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -476,6 +473,62 @@ namespace CapaDatos
 		public int CP_EliminarPrestamoYLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPrestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idLibro)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPrestamo, idLibro);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarHistorialBaja")]
+		public ISingleResult<CP_BuscarHistorialBajaResult> CP_BuscarHistorialBaja([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro);
+			return ((ISingleResult<CP_BuscarHistorialBajaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarHistorialBaja")]
+		public int CP_EliminarHistorialBaja([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_baja)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_baja);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DarDeBajaLibro")]
+		public int DarDeBajaLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string motivo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> decremento_stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, fecha_baja, motivo, decremento_stock);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarLibro")]
+		public int CP_EliminarLibro1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarLibro")]
+		public int CP_InsertarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial, stock);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarLibro")]
+		public int CP_ActualizarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial, stock);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarHistorialBajas")]
+		public ISingleResult<CP_ListarHistorialBajasResult> CP_ListarHistorialBajas()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<CP_ListarHistorialBajasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarBajaLibro")]
+		public int CP_ActualizarBajaLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string motivo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> decremento_stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_baja, id_libro, fecha_baja, motivo, decremento_stock);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -1392,350 +1445,6 @@ namespace CapaDatos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Libro")]
-	public partial class Libro : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_libro;
-		
-		private string _estado;
-		
-		private System.DateTime _anio_publicacion;
-		
-		private string _tipo;
-		
-		private string _nombre;
-		
-		private int _id_categoria;
-		
-		private int _id_editorial;
-		
-		private EntitySet<Autor_Libro> _Autor_Libros;
-		
-		private EntitySet<Prestamo_Libro> _Prestamo_Libros;
-		
-		private EntityRef<Categoria> _Categoria;
-		
-		private EntityRef<Editorial> _Editorial;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_libroChanging(int value);
-    partial void Onid_libroChanged();
-    partial void OnestadoChanging(string value);
-    partial void OnestadoChanged();
-    partial void Onanio_publicacionChanging(System.DateTime value);
-    partial void Onanio_publicacionChanged();
-    partial void OntipoChanging(string value);
-    partial void OntipoChanged();
-    partial void OnnombreChanging(string value);
-    partial void OnnombreChanged();
-    partial void Onid_categoriaChanging(int value);
-    partial void Onid_categoriaChanged();
-    partial void Onid_editorialChanging(int value);
-    partial void Onid_editorialChanged();
-    #endregion
-		
-		public Libro()
-		{
-			this._Autor_Libros = new EntitySet<Autor_Libro>(new Action<Autor_Libro>(this.attach_Autor_Libros), new Action<Autor_Libro>(this.detach_Autor_Libros));
-			this._Prestamo_Libros = new EntitySet<Prestamo_Libro>(new Action<Prestamo_Libro>(this.attach_Prestamo_Libros), new Action<Prestamo_Libro>(this.detach_Prestamo_Libros));
-			this._Categoria = default(EntityRef<Categoria>);
-			this._Editorial = default(EntityRef<Editorial>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this.Onid_libroChanging(value);
-					this.SendPropertyChanging();
-					this._id_libro = value;
-					this.SendPropertyChanged("id_libro");
-					this.Onid_libroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this.OnestadoChanging(value);
-					this.SendPropertyChanging();
-					this._estado = value;
-					this.SendPropertyChanged("estado");
-					this.OnestadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
-		public System.DateTime anio_publicacion
-		{
-			get
-			{
-				return this._anio_publicacion;
-			}
-			set
-			{
-				if ((this._anio_publicacion != value))
-				{
-					this.Onanio_publicacionChanging(value);
-					this.SendPropertyChanging();
-					this._anio_publicacion = value;
-					this.SendPropertyChanged("anio_publicacion");
-					this.Onanio_publicacionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string tipo
-		{
-			get
-			{
-				return this._tipo;
-			}
-			set
-			{
-				if ((this._tipo != value))
-				{
-					this.OntipoChanging(value);
-					this.SendPropertyChanging();
-					this._tipo = value;
-					this.SendPropertyChanged("tipo");
-					this.OntipoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this.OnnombreChanging(value);
-					this.SendPropertyChanging();
-					this._nombre = value;
-					this.SendPropertyChanged("nombre");
-					this.OnnombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
-		public int id_categoria
-		{
-			get
-			{
-				return this._id_categoria;
-			}
-			set
-			{
-				if ((this._id_categoria != value))
-				{
-					if (this._Categoria.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_categoriaChanging(value);
-					this.SendPropertyChanging();
-					this._id_categoria = value;
-					this.SendPropertyChanged("id_categoria");
-					this.Onid_categoriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
-		public int id_editorial
-		{
-			get
-			{
-				return this._id_editorial;
-			}
-			set
-			{
-				if ((this._id_editorial != value))
-				{
-					if (this._Editorial.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_editorialChanging(value);
-					this.SendPropertyChanging();
-					this._id_editorial = value;
-					this.SendPropertyChanged("id_editorial");
-					this.Onid_editorialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Autor_Libro", Storage="_Autor_Libros", ThisKey="id_libro", OtherKey="id_libro")]
-		public EntitySet<Autor_Libro> Autor_Libros
-		{
-			get
-			{
-				return this._Autor_Libros;
-			}
-			set
-			{
-				this._Autor_Libros.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Prestamo_Libros", ThisKey="id_libro", OtherKey="id_libro")]
-		public EntitySet<Prestamo_Libro> Prestamo_Libros
-		{
-			get
-			{
-				return this._Prestamo_Libros;
-			}
-			set
-			{
-				this._Prestamo_Libros.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_Libro", Storage="_Categoria", ThisKey="id_categoria", OtherKey="id_categoria", IsForeignKey=true)]
-		public Categoria Categoria
-		{
-			get
-			{
-				return this._Categoria.Entity;
-			}
-			set
-			{
-				Categoria previousValue = this._Categoria.Entity;
-				if (((previousValue != value) 
-							|| (this._Categoria.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Categoria.Entity = null;
-						previousValue.Libros.Remove(this);
-					}
-					this._Categoria.Entity = value;
-					if ((value != null))
-					{
-						value.Libros.Add(this);
-						this._id_categoria = value.id_categoria;
-					}
-					else
-					{
-						this._id_categoria = default(int);
-					}
-					this.SendPropertyChanged("Categoria");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Editorial_Libro", Storage="_Editorial", ThisKey="id_editorial", OtherKey="id_editorial", IsForeignKey=true)]
-		public Editorial Editorial
-		{
-			get
-			{
-				return this._Editorial.Entity;
-			}
-			set
-			{
-				Editorial previousValue = this._Editorial.Entity;
-				if (((previousValue != value) 
-							|| (this._Editorial.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Editorial.Entity = null;
-						previousValue.Libros.Remove(this);
-					}
-					this._Editorial.Entity = value;
-					if ((value != null))
-					{
-						value.Libros.Add(this);
-						this._id_editorial = value.id_editorial;
-					}
-					else
-					{
-						this._id_editorial = default(int);
-					}
-					this.SendPropertyChanged("Editorial");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Autor_Libros(Autor_Libro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Libro = this;
-		}
-		
-		private void detach_Autor_Libros(Autor_Libro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Libro = null;
-		}
-		
-		private void attach_Prestamo_Libros(Prestamo_Libro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Libro = this;
-		}
-		
-		private void detach_Prestamo_Libros(Prestamo_Libro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Libro = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Prestamo")]
 	public partial class Prestamo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1997,9 +1706,9 @@ namespace CapaDatos
 		
 		private int _id_libro;
 		
-		private EntityRef<Libro> _Libro;
-		
 		private EntityRef<Prestamo> _Prestamo;
+		
+		private EntityRef<Libro> _Libro;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2013,8 +1722,8 @@ namespace CapaDatos
 		
 		public Prestamo_Libro()
 		{
-			this._Libro = default(EntityRef<Libro>);
 			this._Prestamo = default(EntityRef<Prestamo>);
+			this._Libro = default(EntityRef<Libro>);
 			OnCreated();
 		}
 		
@@ -2066,40 +1775,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Libro", ThisKey="id_libro", OtherKey="id_libro", IsForeignKey=true)]
-		public Libro Libro
-		{
-			get
-			{
-				return this._Libro.Entity;
-			}
-			set
-			{
-				Libro previousValue = this._Libro.Entity;
-				if (((previousValue != value) 
-							|| (this._Libro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Libro.Entity = null;
-						previousValue.Prestamo_Libros.Remove(this);
-					}
-					this._Libro.Entity = value;
-					if ((value != null))
-					{
-						value.Prestamo_Libros.Add(this);
-						this._id_libro = value.id_libro;
-					}
-					else
-					{
-						this._id_libro = default(int);
-					}
-					this.SendPropertyChanged("Libro");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prestamo_Prestamo_Libro", Storage="_Prestamo", ThisKey="id_prestamo", OtherKey="id_prestamo", IsForeignKey=true)]
 		public Prestamo Prestamo
 		{
@@ -2134,6 +1809,40 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Libro", ThisKey="id_libro", OtherKey="id_libro", IsForeignKey=true)]
+		public Libro Libro
+		{
+			get
+			{
+				return this._Libro.Entity;
+			}
+			set
+			{
+				Libro previousValue = this._Libro.Entity;
+				if (((previousValue != value) 
+							|| (this._Libro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Libro.Entity = null;
+						previousValue.Prestamo_Libros.Remove(this);
+					}
+					this._Libro.Entity = value;
+					if ((value != null))
+					{
+						value.Prestamo_Libros.Add(this);
+						this._id_libro = value.id_libro;
+					}
+					else
+					{
+						this._id_libro = default(int);
+					}
+					this.SendPropertyChanged("Libro");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2152,6 +1861,601 @@ namespace CapaDatos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HistorialBajas")]
+	public partial class HistorialBaja : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_baja;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha_baja;
+		
+		private string _motivo;
+		
+		private int _decremento_stock;
+		
+		private EntityRef<Libro> _Libro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_bajaChanging(int value);
+    partial void Onid_bajaChanged();
+    partial void Onid_libroChanging(int value);
+    partial void Onid_libroChanged();
+    partial void Onfecha_bajaChanging(System.DateTime value);
+    partial void Onfecha_bajaChanged();
+    partial void OnmotivoChanging(string value);
+    partial void OnmotivoChanged();
+    partial void Ondecremento_stockChanging(int value);
+    partial void Ondecremento_stockChanged();
+    #endregion
+		
+		public HistorialBaja()
+		{
+			this._Libro = default(EntityRef<Libro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_baja
+		{
+			get
+			{
+				return this._id_baja;
+			}
+			set
+			{
+				if ((this._id_baja != value))
+				{
+					this.Onid_bajaChanging(value);
+					this.SendPropertyChanging();
+					this._id_baja = value;
+					this.SendPropertyChanged("id_baja");
+					this.Onid_bajaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					if (this._Libro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_libroChanging(value);
+					this.SendPropertyChanging();
+					this._id_libro = value;
+					this.SendPropertyChanged("id_libro");
+					this.Onid_libroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_baja
+		{
+			get
+			{
+				return this._fecha_baja;
+			}
+			set
+			{
+				if ((this._fecha_baja != value))
+				{
+					this.Onfecha_bajaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha_baja = value;
+					this.SendPropertyChanged("fecha_baja");
+					this.Onfecha_bajaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
+		public string motivo
+		{
+			get
+			{
+				return this._motivo;
+			}
+			set
+			{
+				if ((this._motivo != value))
+				{
+					this.OnmotivoChanging(value);
+					this.SendPropertyChanging();
+					this._motivo = value;
+					this.SendPropertyChanged("motivo");
+					this.OnmotivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
+		public int decremento_stock
+		{
+			get
+			{
+				return this._decremento_stock;
+			}
+			set
+			{
+				if ((this._decremento_stock != value))
+				{
+					this.Ondecremento_stockChanging(value);
+					this.SendPropertyChanging();
+					this._decremento_stock = value;
+					this.SendPropertyChanged("decremento_stock");
+					this.Ondecremento_stockChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_HistorialBaja", Storage="_Libro", ThisKey="id_libro", OtherKey="id_libro", IsForeignKey=true)]
+		public Libro Libro
+		{
+			get
+			{
+				return this._Libro.Entity;
+			}
+			set
+			{
+				Libro previousValue = this._Libro.Entity;
+				if (((previousValue != value) 
+							|| (this._Libro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Libro.Entity = null;
+						previousValue.HistorialBajas.Remove(this);
+					}
+					this._Libro.Entity = value;
+					if ((value != null))
+					{
+						value.HistorialBajas.Add(this);
+						this._id_libro = value.id_libro;
+					}
+					else
+					{
+						this._id_libro = default(int);
+					}
+					this.SendPropertyChanged("Libro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Libro")]
+	public partial class Libro : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_libro;
+		
+		private string _estado;
+		
+		private System.DateTime _anio_publicacion;
+		
+		private string _tipo;
+		
+		private string _nombre;
+		
+		private int _id_categoria;
+		
+		private int _id_editorial;
+		
+		private int _stock;
+		
+		private EntitySet<Autor_Libro> _Autor_Libros;
+		
+		private EntitySet<Prestamo_Libro> _Prestamo_Libros;
+		
+		private EntitySet<HistorialBaja> _HistorialBajas;
+		
+		private EntityRef<Categoria> _Categoria;
+		
+		private EntityRef<Editorial> _Editorial;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_libroChanging(int value);
+    partial void Onid_libroChanged();
+    partial void OnestadoChanging(string value);
+    partial void OnestadoChanged();
+    partial void Onanio_publicacionChanging(System.DateTime value);
+    partial void Onanio_publicacionChanged();
+    partial void OntipoChanging(string value);
+    partial void OntipoChanged();
+    partial void OnnombreChanging(string value);
+    partial void OnnombreChanged();
+    partial void Onid_categoriaChanging(int value);
+    partial void Onid_categoriaChanged();
+    partial void Onid_editorialChanging(int value);
+    partial void Onid_editorialChanged();
+    partial void OnstockChanging(int value);
+    partial void OnstockChanged();
+    #endregion
+		
+		public Libro()
+		{
+			this._Autor_Libros = new EntitySet<Autor_Libro>(new Action<Autor_Libro>(this.attach_Autor_Libros), new Action<Autor_Libro>(this.detach_Autor_Libros));
+			this._Prestamo_Libros = new EntitySet<Prestamo_Libro>(new Action<Prestamo_Libro>(this.attach_Prestamo_Libros), new Action<Prestamo_Libro>(this.detach_Prestamo_Libros));
+			this._HistorialBajas = new EntitySet<HistorialBaja>(new Action<HistorialBaja>(this.attach_HistorialBajas), new Action<HistorialBaja>(this.detach_HistorialBajas));
+			this._Categoria = default(EntityRef<Categoria>);
+			this._Editorial = default(EntityRef<Editorial>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this.Onid_libroChanging(value);
+					this.SendPropertyChanging();
+					this._id_libro = value;
+					this.SendPropertyChanged("id_libro");
+					this.Onid_libroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this.OnestadoChanging(value);
+					this.SendPropertyChanging();
+					this._estado = value;
+					this.SendPropertyChanged("estado");
+					this.OnestadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
+		public System.DateTime anio_publicacion
+		{
+			get
+			{
+				return this._anio_publicacion;
+			}
+			set
+			{
+				if ((this._anio_publicacion != value))
+				{
+					this.Onanio_publicacionChanging(value);
+					this.SendPropertyChanging();
+					this._anio_publicacion = value;
+					this.SendPropertyChanged("anio_publicacion");
+					this.Onanio_publicacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this.OntipoChanging(value);
+					this.SendPropertyChanging();
+					this._tipo = value;
+					this.SendPropertyChanged("tipo");
+					this.OntipoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this.OnnombreChanging(value);
+					this.SendPropertyChanging();
+					this._nombre = value;
+					this.SendPropertyChanged("nombre");
+					this.OnnombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
+		public int id_categoria
+		{
+			get
+			{
+				return this._id_categoria;
+			}
+			set
+			{
+				if ((this._id_categoria != value))
+				{
+					if (this._Categoria.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_categoriaChanging(value);
+					this.SendPropertyChanging();
+					this._id_categoria = value;
+					this.SendPropertyChanged("id_categoria");
+					this.Onid_categoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
+		public int id_editorial
+		{
+			get
+			{
+				return this._id_editorial;
+			}
+			set
+			{
+				if ((this._id_editorial != value))
+				{
+					if (this._Editorial.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_editorialChanging(value);
+					this.SendPropertyChanging();
+					this._id_editorial = value;
+					this.SendPropertyChanged("id_editorial");
+					this.Onid_editorialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
+		public int stock
+		{
+			get
+			{
+				return this._stock;
+			}
+			set
+			{
+				if ((this._stock != value))
+				{
+					this.OnstockChanging(value);
+					this.SendPropertyChanging();
+					this._stock = value;
+					this.SendPropertyChanged("stock");
+					this.OnstockChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Autor_Libro", Storage="_Autor_Libros", ThisKey="id_libro", OtherKey="id_libro")]
+		public EntitySet<Autor_Libro> Autor_Libros
+		{
+			get
+			{
+				return this._Autor_Libros;
+			}
+			set
+			{
+				this._Autor_Libros.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Prestamo_Libros", ThisKey="id_libro", OtherKey="id_libro")]
+		public EntitySet<Prestamo_Libro> Prestamo_Libros
+		{
+			get
+			{
+				return this._Prestamo_Libros;
+			}
+			set
+			{
+				this._Prestamo_Libros.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_HistorialBaja", Storage="_HistorialBajas", ThisKey="id_libro", OtherKey="id_libro")]
+		public EntitySet<HistorialBaja> HistorialBajas
+		{
+			get
+			{
+				return this._HistorialBajas;
+			}
+			set
+			{
+				this._HistorialBajas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_Libro", Storage="_Categoria", ThisKey="id_categoria", OtherKey="id_categoria", IsForeignKey=true)]
+		public Categoria Categoria
+		{
+			get
+			{
+				return this._Categoria.Entity;
+			}
+			set
+			{
+				Categoria previousValue = this._Categoria.Entity;
+				if (((previousValue != value) 
+							|| (this._Categoria.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Categoria.Entity = null;
+						previousValue.Libros.Remove(this);
+					}
+					this._Categoria.Entity = value;
+					if ((value != null))
+					{
+						value.Libros.Add(this);
+						this._id_categoria = value.id_categoria;
+					}
+					else
+					{
+						this._id_categoria = default(int);
+					}
+					this.SendPropertyChanged("Categoria");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Editorial_Libro", Storage="_Editorial", ThisKey="id_editorial", OtherKey="id_editorial", IsForeignKey=true)]
+		public Editorial Editorial
+		{
+			get
+			{
+				return this._Editorial.Entity;
+			}
+			set
+			{
+				Editorial previousValue = this._Editorial.Entity;
+				if (((previousValue != value) 
+							|| (this._Editorial.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Editorial.Entity = null;
+						previousValue.Libros.Remove(this);
+					}
+					this._Editorial.Entity = value;
+					if ((value != null))
+					{
+						value.Libros.Add(this);
+						this._id_editorial = value.id_editorial;
+					}
+					else
+					{
+						this._id_editorial = default(int);
+					}
+					this.SendPropertyChanged("Editorial");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Autor_Libros(Autor_Libro entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = this;
+		}
+		
+		private void detach_Autor_Libros(Autor_Libro entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = null;
+		}
+		
+		private void attach_Prestamo_Libros(Prestamo_Libro entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = this;
+		}
+		
+		private void detach_Prestamo_Libros(Prestamo_Libro entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = null;
+		}
+		
+		private void attach_HistorialBajas(HistorialBaja entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = this;
+		}
+		
+		private void detach_HistorialBajas(HistorialBaja entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = null;
 		}
 	}
 	
@@ -3061,6 +3365,8 @@ namespace CapaDatos
 		private int _id_categoria;
 		
 		private int _id_editorial;
+		private int _stock;
+
 		
 		public CP_ListarLibrosResult()
 		{
@@ -3177,6 +3483,22 @@ namespace CapaDatos
 				}
 			}
 		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
+		public int stock
+		{
+            get
+			{
+                return this._stock;
+            }
+            set
+			{
+                if ((this._stock != value))
+				{
+                    this._stock = value;
+                }
+            }
+        }
 	}
 	
 	public partial class CP_ListarPrestamoLibroResult
@@ -3863,6 +4185,7 @@ namespace CapaDatos
 		private int _id_categoria;
 		
 		private int _id_editorial;
+		private int _stock;
 		
 		public CP_BuscarLibroResult()
 		{
@@ -3979,6 +4302,22 @@ namespace CapaDatos
 				}
 			}
 		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
+		public int stock
+		{
+            get
+			{
+                return this._stock;
+            }
+            set
+			{
+                if ((this._stock != value))
+				{
+                    this._stock = value;
+                }
+            }
+        }
 	}
 	
 	public partial class CP_BuscarPrestamoResult
@@ -4226,6 +4565,202 @@ namespace CapaDatos
 				if ((this._id_editorial != value))
 				{
 					this._id_editorial = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarHistorialBajaResult
+	{
+		
+		private int _id_baja;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha_baja;
+		
+		private string _motivo;
+		
+		private int _decremento_stock;
+		
+		public CP_BuscarHistorialBajaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", DbType="Int NOT NULL")]
+		public int id_baja
+		{
+			get
+			{
+				return this._id_baja;
+			}
+			set
+			{
+				if ((this._id_baja != value))
+				{
+					this._id_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_baja
+		{
+			get
+			{
+				return this._fecha_baja;
+			}
+			set
+			{
+				if ((this._fecha_baja != value))
+				{
+					this._fecha_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
+		public string motivo
+		{
+			get
+			{
+				return this._motivo;
+			}
+			set
+			{
+				if ((this._motivo != value))
+				{
+					this._motivo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
+		public int decremento_stock
+		{
+			get
+			{
+				return this._decremento_stock;
+			}
+			set
+			{
+				if ((this._decremento_stock != value))
+				{
+					this._decremento_stock = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarHistorialBajasResult
+	{
+		
+		private int _id_baja;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha_baja;
+		
+		private string _motivo;
+		
+		private int _decremento_stock;
+		
+		public CP_ListarHistorialBajasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", DbType="Int NOT NULL")]
+		public int id_baja
+		{
+			get
+			{
+				return this._id_baja;
+			}
+			set
+			{
+				if ((this._id_baja != value))
+				{
+					this._id_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_baja
+		{
+			get
+			{
+				return this._fecha_baja;
+			}
+			set
+			{
+				if ((this._fecha_baja != value))
+				{
+					this._fecha_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
+		public string motivo
+		{
+			get
+			{
+				return this._motivo;
+			}
+			set
+			{
+				if ((this._motivo != value))
+				{
+					this._motivo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
+		public int decremento_stock
+		{
+			get
+			{
+				return this._decremento_stock;
+			}
+			set
+			{
+				if ((this._decremento_stock != value))
+				{
+					this._decremento_stock = value;
 				}
 			}
 		}

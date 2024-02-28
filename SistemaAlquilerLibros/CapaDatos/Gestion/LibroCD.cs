@@ -35,7 +35,7 @@ namespace CapaDatos.Gestion
             {
                 using (DB = new BibliotecaDataContext())
                 {
-                    DB.CP_InsertarLibro(ol.IdLibro, ol.Estado, ol.Anio_publicacion, ol.Tipo, ol.Nombre, ol.IdCategoria, ol.IdEditorial);
+                    DB.CP_InsertarLibro(ol.IdLibro, ol.Estado, ol.Anio_publicacion, ol.Tipo, ol.Nombre, ol.IdCategoria, ol.IdEditorial, ol.Stock);
                 }
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace CapaDatos.Gestion
             {
                 using (DB = new BibliotecaDataContext())
                 {
-                    DB.CP_ActualizarLibro(ol.IdLibro, ol.Estado, ol.Anio_publicacion, ol.Tipo, ol.Nombre, ol.IdCategoria, ol.IdEditorial);
+                    DB.CP_ActualizarLibro(ol.IdLibro, ol.Estado, ol.Anio_publicacion, ol.Tipo, ol.Nombre, ol.IdCategoria, ol.IdEditorial, ol.Stock);
                 }
             }
             catch (Exception ex)

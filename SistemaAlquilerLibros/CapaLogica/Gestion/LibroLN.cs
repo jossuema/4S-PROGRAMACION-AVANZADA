@@ -27,7 +27,7 @@ namespace CapaLogica.Gestion
                         var autor = CapaDatos.Gestion.AutorCD.BuscarAutor(item.id_autor).FirstOrDefault();
                         autoresList.Append(autor.nombre + " " + autor.apellido + ", ");
                     }
-                    ol = new CapaEntidades.ClasesPersonalizadas.LibroListar(op.id_libro, op.estado, op.anio_publicacion, op.tipo, op.nombre, categoria, editorial, autoresList.ToString());
+                    ol = new CapaEntidades.ClasesPersonalizadas.LibroListar(op.id_libro, op.estado, op.anio_publicacion, op.tipo, op.nombre, categoria, editorial, autoresList.ToString(), op.stock);
                     ListaLibros.Add(ol);
                 }
                 return ListaLibros;
@@ -151,7 +151,7 @@ namespace CapaLogica.Gestion
                 }
                 else
                 {
-                    return new CapaEntidades.Gestion.Libro(libro.id_libro, libro.estado, libro.anio_publicacion, libro.tipo, libro.nombre, libro.id_categoria, libro.id_editorial);
+                    return new CapaEntidades.Gestion.Libro(libro.id_libro, libro.estado, libro.anio_publicacion, libro.tipo, libro.nombre, libro.id_categoria, libro.id_editorial, libro.stock);
                 }
             }
             catch (Exception ex)

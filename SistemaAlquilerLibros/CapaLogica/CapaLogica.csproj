@@ -45,6 +45,7 @@
     <Compile Include="Gestion\CategoriaLN.cs" />
     <Compile Include="Gestion\EditorialLN.cs" />
     <Compile Include="Gestion\EstudianteLN.cs" />
+    <Compile Include="Gestion\HistorialBajaLN.cs" />
     <Compile Include="Gestion\LibroLN.cs" />
     <Compile Include="Gestion\PrestamoLibroLN.cs" />
     <Compile Include="Gestion\PrestamoLN.cs" />

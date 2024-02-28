@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClasesPersonalizadas\AutorLibroListar.cs" />
+    <Compile Include="ClasesPersonalizadas\HistorialBajaListar.cs" />
     <Compile Include="ClasesPersonalizadas\LibroListar.cs" />
     <Compile Include="ClasesPersonalizadas\PrestamoLibroListar.cs" />
     <Compile Include="ClasesPersonalizadas\PrestamoListar.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Gestion\Categoria.cs" />
     <Compile Include="Gestion\Editorial.cs" />
     <Compile Include="Gestion\Estudiante.cs" />
+    <Compile Include="Gestion\HistorialBaja.cs" />
     <Compile Include="Gestion\Libro.cs" />
     <Compile Include="Gestion\Prestamo.cs" />
     <Compile Include="Gestion\PrestamoLibro.cs" />
