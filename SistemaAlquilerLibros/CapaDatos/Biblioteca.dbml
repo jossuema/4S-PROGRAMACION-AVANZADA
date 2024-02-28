@@ -443,4 +443,14 @@
       <Column Name="id_editorial" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.CP_EliminarAutoryLibro" Method="CP_EliminarAutoryLibro">
+    <Parameter Name="id_autor" Type="System.Int32" DbType="Int" />
+    <Parameter Name="id_libro" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CP_EliminarPrestamoYLibro" Method="CP_EliminarPrestamoYLibro">
+    <Parameter Name="idPrestamo" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idLibro" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

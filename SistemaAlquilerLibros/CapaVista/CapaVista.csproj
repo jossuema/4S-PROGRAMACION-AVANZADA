@@ -67,6 +67,12 @@
     <Compile Include="Formularios\frmAdminAutor.Designer.cs">
       <DependentUpon>frmAdminAutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAdminAutorLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminAutorLibro.Designer.cs">
+      <DependentUpon>frmAdminAutorLibro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmAdminCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,11 +103,23 @@
     <Compile Include="Formularios\frmAdminPrestamo.Designer.cs">
       <DependentUpon>frmAdminPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAdminPrestamoLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminPrestamoLibro.Designer.cs">
+      <DependentUpon>frmAdminPrestamoLibro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmAutor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frmAutor.Designer.cs">
       <DependentUpon>frmAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAutorLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAutorLibro.Designer.cs">
+      <DependentUpon>frmAutorLibro.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmCategoria.cs">
       <SubType>Form</SubType>
@@ -133,6 +151,12 @@
     <Compile Include="Formularios\frmPrestado.Designer.cs">
       <DependentUpon>frmPrestado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmPrestamoLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPrestamoLibro.Designer.cs">
+      <DependentUpon>frmPrestamoLibro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Seguridad\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +175,9 @@
     <EmbeddedResource Include="Formularios\frmAdminAutor.resx">
       <DependentUpon>frmAdminAutor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminAutorLibro.resx">
+      <DependentUpon>frmAdminAutorLibro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAdminCategoria.resx">
       <DependentUpon>frmAdminCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,8 +193,14 @@
     <EmbeddedResource Include="Formularios\frmAdminPrestamo.resx">
       <DependentUpon>frmAdminPrestamo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminPrestamoLibro.resx">
+      <DependentUpon>frmAdminPrestamoLibro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAutor.resx">
       <DependentUpon>frmAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAutorLibro.resx">
+      <DependentUpon>frmAutorLibro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
@@ -183,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmPrestado.resx">
       <DependentUpon>frmPrestado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPrestamoLibro.resx">
+      <DependentUpon>frmPrestamoLibro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

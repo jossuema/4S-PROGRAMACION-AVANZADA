@@ -78,5 +78,13 @@ namespace capavista
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
+
+        private void autorLibroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminAutorLibro frm = new frmAdminAutorLibro();
+            frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }

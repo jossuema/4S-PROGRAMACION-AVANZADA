@@ -86,7 +86,7 @@ namespace CapaDatos.Gestion
                 DB = null;
             }
         }
-        //Buscar autor
+       
         public static List<CP_BuscarAutorResult> BuscarAutor(int val)
         {
             BibliotecaDataContext DB = null;
