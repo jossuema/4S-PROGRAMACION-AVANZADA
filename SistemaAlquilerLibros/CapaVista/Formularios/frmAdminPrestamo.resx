@@ -129,9 +129,6 @@
   <metadata name="apellido.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="sexo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="fecha_nacimiento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -184,6 +181,16 @@
         qIM8oCOmJZcY0rmwxzOiZo8ZlOQAFtjzZ9QT9nhGPz9jH5UPyAfkA/IB+YB8wP84oCHw4RhDagp7PCNq
         9phBtQ9oCQ/cYewoMpxH9kYdCf7vGHgXj+JhS5glgywyyf6TBsJXp4LMWroRLyIWVgcyyIqoKFbcRark
         s1yydQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADuSURBVEhL7dbNCgFRGIDh2RELGzsk96OUUtyEspJS7kJZ
+        uQk/Gwt2yAaXwBZxA7ynLHT65uebMVPKW0+S8506yRzOv7jLoYUxFti9X837JsznkUqjhweeHu7oIgV1
+        FRwhbezmADMXuDLOkDbzc0IJvmWhPYltjww8G0Aa1urDNXOaG6RBrStcT9WANBRWHWIjSANhDSE2h71Y
+        kz07hdgG9mJN9uwaYjPYizXZsxOIJfYd1SANhFWF2Dd/Rxd4Ph06kAa12vDMXA3mvpGGg9oi0JVRRJSn
+        dwGBy2MFaTM3S5g5dYncsJ/F/p/h13KcF+2TKiVTfm5iAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

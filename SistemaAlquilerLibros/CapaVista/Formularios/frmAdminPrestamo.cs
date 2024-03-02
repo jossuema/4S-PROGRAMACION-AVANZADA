@@ -38,8 +38,8 @@ namespace capavista.Formularios
 
         private void Nuevo()
         {
-            try
-            {
+            //try
+            //{
                 frmPrestado frm = new frmPrestado();
                 frm.ShowDialog();
                 if (frm.DialogResult == DialogResult.OK)
@@ -49,10 +49,10 @@ namespace capavista.Formularios
                     ln.InsertarPrestamo(prestamo, libros);
                     Listar();
                 }
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Error al intentar abrir el formulario de prestamo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}catch (Exception ex)
+            //{
+                //MessageBox.Show("Error al intentar abrir el formulario de prestamo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void Editar()
@@ -106,6 +106,12 @@ namespace capavista.Formularios
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Eliminar();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            frmDevolucion frm = new frmDevolucion();
+            frm.ShowDialog();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace capavista.Formularios
 {
-    partial class frmAdminPrestamo
+    partial class frmAdminKardex
     {
         /// <summary>
         /// Required designer variable.
@@ -31,17 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminPrestamo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminKardex));
             this.dtgProducto = new System.Windows.Forms.DataGridView();
-            this.id_prestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cedulaEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblEstado = new System.Windows.Forms.ToolStripStatusLabel();
@@ -49,7 +42,14 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.id_kardex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProducto)).BeginInit();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -69,13 +69,14 @@
             this.dtgProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_prestamo,
-            this.estado,
-            this.nombre,
-            this.apellido,
-            this.fecha_nacimiento,
-            this.cedulaEstudiante,
-            this.nombreEstudiante});
+            this.id_kardex,
+            this.nombreLibro,
+            this.estadoLibro,
+            this.fecha,
+            this.detalle,
+            this.entrada,
+            this.salida,
+            this.total});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -94,114 +95,49 @@
             this.dtgProducto.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtgProducto.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgProducto.Size = new System.Drawing.Size(1057, 534);
+            this.dtgProducto.Size = new System.Drawing.Size(722, 373);
             this.dtgProducto.TabIndex = 24;
-            // 
-            // id_prestamo
-            // 
-            this.id_prestamo.DataPropertyName = "idPrestamo";
-            this.id_prestamo.HeaderText = "ID";
-            this.id_prestamo.MinimumWidth = 6;
-            this.id_prestamo.Name = "id_prestamo";
-            this.id_prestamo.ReadOnly = true;
-            this.id_prestamo.Width = 55;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.MinimumWidth = 6;
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            this.estado.Width = 90;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "fechaEntrega";
-            this.nombre.HeaderText = "Fecha Entrega";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 135;
-            // 
-            // apellido
-            // 
-            this.apellido.DataPropertyName = "fechaTentativa";
-            this.apellido.HeaderText = "Fecha Tentativa";
-            this.apellido.MinimumWidth = 6;
-            this.apellido.Name = "apellido";
-            this.apellido.ReadOnly = true;
-            this.apellido.Width = 144;
-            // 
-            // fecha_nacimiento
-            // 
-            this.fecha_nacimiento.DataPropertyName = "nombreLibro";
-            this.fecha_nacimiento.HeaderText = "Libros";
-            this.fecha_nacimiento.MinimumWidth = 6;
-            this.fecha_nacimiento.Name = "fecha_nacimiento";
-            this.fecha_nacimiento.ReadOnly = true;
-            this.fecha_nacimiento.Width = 85;
-            // 
-            // cedulaEstudiante
-            // 
-            this.cedulaEstudiante.DataPropertyName = "cedulaEstudiante";
-            this.cedulaEstudiante.HeaderText = "Cedula Estudiante";
-            this.cedulaEstudiante.MinimumWidth = 6;
-            this.cedulaEstudiante.Name = "cedulaEstudiante";
-            this.cedulaEstudiante.ReadOnly = true;
-            this.cedulaEstudiante.Width = 159;
-            // 
-            // nombreEstudiante
-            // 
-            this.nombreEstudiante.DataPropertyName = "nombreEstudiante";
-            this.nombreEstudiante.HeaderText = "Nombre Estudiante";
-            this.nombreEstudiante.MinimumWidth = 6;
-            this.nombreEstudiante.Name = "nombreEstudiante";
-            this.nombreEstudiante.ReadOnly = true;
-            this.nombreEstudiante.Width = 165;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtBuscar);
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(78, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1057, 48);
+            this.panel1.Size = new System.Drawing.Size(722, 48);
             this.panel1.TabIndex = 21;
             // 
-            // txtBuscar
+            // comboBox1
             // 
-            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Location = new System.Drawing.Point(159, 11);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(332, 26);
-            this.txtBuscar.TabIndex = 27;
-            this.txtBuscar.Tag = "d";
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(63, 12);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(309, 24);
+            this.comboBox1.TabIndex = 27;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(75, 15);
+            this.label1.Location = new System.Drawing.Point(4, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 20);
+            this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 26;
-            this.label1.Text = "Buscar";
+            this.label1.Text = "Libro:";
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado});
-            this.statusStrip1.Location = new System.Drawing.Point(78, 582);
+            this.statusStrip1.Location = new System.Drawing.Point(78, 421);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1057, 29);
+            this.statusStrip1.Size = new System.Drawing.Size(722, 29);
             this.statusStrip1.TabIndex = 23;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -220,11 +156,10 @@
             this.tlsBarraPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripButton5});
+            this.toolStripButton3});
             this.tlsBarraPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tlsBarraPrincipal.Name = "tlsBarraPrincipal";
-            this.tlsBarraPrincipal.Size = new System.Drawing.Size(78, 611);
+            this.tlsBarraPrincipal.Size = new System.Drawing.Size(78, 450);
             this.tlsBarraPrincipal.TabIndex = 22;
             this.tlsBarraPrincipal.Text = "toolStrip1";
             // 
@@ -235,7 +170,7 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(76, 56);
-            this.toolStripButton1.Text = "Prestamo";
+            this.toolStripButton1.Text = "Nuevo";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -261,28 +196,89 @@
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripButton5
+            // id_kardex
             // 
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(76, 50);
-            this.toolStripButton5.Text = "Devolucion";
-            this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.id_kardex.DataPropertyName = "idkardex";
+            this.id_kardex.HeaderText = "ID";
+            this.id_kardex.MinimumWidth = 6;
+            this.id_kardex.Name = "id_kardex";
+            this.id_kardex.ReadOnly = true;
+            this.id_kardex.Width = 55;
             // 
-            // frmAdminPrestamo
+            // nombreLibro
+            // 
+            this.nombreLibro.DataPropertyName = "nombreLibro";
+            this.nombreLibro.HeaderText = "Nombre Libro";
+            this.nombreLibro.MinimumWidth = 6;
+            this.nombreLibro.Name = "nombreLibro";
+            this.nombreLibro.ReadOnly = true;
+            this.nombreLibro.Width = 140;
+            // 
+            // estadoLibro
+            // 
+            this.estadoLibro.DataPropertyName = "estadoLibro";
+            this.estadoLibro.HeaderText = "Estado Libro";
+            this.estadoLibro.MinimumWidth = 6;
+            this.estadoLibro.Name = "estadoLibro";
+            this.estadoLibro.ReadOnly = true;
+            this.estadoLibro.Width = 133;
+            // 
+            // fecha
+            // 
+            this.fecha.DataPropertyName = "fecha";
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.MinimumWidth = 6;
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Width = 84;
+            // 
+            // detalle
+            // 
+            this.detalle.DataPropertyName = "detalle";
+            this.detalle.HeaderText = "Detalle";
+            this.detalle.MinimumWidth = 6;
+            this.detalle.Name = "detalle";
+            this.detalle.ReadOnly = true;
+            this.detalle.Width = 91;
+            // 
+            // entrada
+            // 
+            this.entrada.DataPropertyName = "entrada";
+            this.entrada.HeaderText = "Entrada";
+            this.entrada.MinimumWidth = 6;
+            this.entrada.Name = "entrada";
+            this.entrada.ReadOnly = true;
+            this.entrada.Width = 96;
+            // 
+            // salida
+            // 
+            this.salida.DataPropertyName = "salida";
+            this.salida.HeaderText = "Salida";
+            this.salida.MinimumWidth = 6;
+            this.salida.Name = "salida";
+            this.salida.ReadOnly = true;
+            this.salida.Width = 84;
+            // 
+            // total
+            // 
+            this.total.DataPropertyName = "total";
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 6;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 75;
+            // 
+            // frmAdminKardex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 611);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dtgProducto);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tlsBarraPrincipal);
-            this.Name = "frmAdminPrestamo";
-            this.Text = "frmAdminPrestamo";
+            this.Name = "frmAdminKardex";
+            this.Text = "frmAdminKardex";
             ((System.ComponentModel.ISupportInitialize)(this.dtgProducto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -299,21 +295,21 @@
 
         private System.Windows.Forms.DataGridView dtgProducto;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblEstado;
         private System.Windows.Forms.ToolStrip tlsBarraPrincipal;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_prestamo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_nacimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaEstudiante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreEstudiante;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_kardex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreLibro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoLibro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

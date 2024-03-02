@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,15 @@ namespace CapaLogica.Gestion
             try
             {
                 CapaDatos.Gestion.HistorialBajaCD.DarDeBajaLibro(op);
+                var libro = CapaDatos.Gestion.LibroCD.BuscarLibro(op.IdLibro).FirstOrDefault();
+                CapaEntidades.Gestion.Kardex kardex = new CapaEntidades.Gestion.Kardex();
+                kardex.Id_libro = op.IdLibro;
+                kardex.Fecha = op.FechaBaja;
+                kardex.Detalle = "Baja de libro";
+                kardex.Entrada = 0;
+                kardex.Salida = op.DecrementoStock;
+                kardex.Total = libro.stock - op.DecrementoStock;
+                CapaDatos.Gestion.KardexCD.InsertarKardex(kardex);
             }
             catch (Exception ex)
             {

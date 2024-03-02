@@ -31,28 +31,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.dateFechaEntrega = new System.Windows.Forms.DateTimePicker();
             this.dateFechaTentativa = new System.Windows.Forms.DateTimePicker();
-            this.dateFechaDevolucion = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cbEstudiante = new System.Windows.Forms.ComboBox();
-            this.lbNoSelec = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lbSelec = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idlibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(194, 26);
+            this.label1.Location = new System.Drawing.Point(259, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 0;
@@ -71,28 +69,8 @@
             // 
             this.txtCodigo.Location = new System.Drawing.Point(112, 59);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(312, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(444, 22);
             this.txtCodigo.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Estado:";
-            // 
-            // cbEstado
-            // 
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Items.AddRange(new object[] {
-            "En curso",
-            "Finalizado"});
-            this.cbEstado.Location = new System.Drawing.Point(112, 96);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(312, 24);
-            this.cbEstado.TabIndex = 4;
             // 
             // label4
             // 
@@ -112,35 +90,19 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Fecha tentativa:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(40, 218);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 16);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Fecha devolucion:";
-            // 
             // dateFechaEntrega
             // 
             this.dateFechaEntrega.Location = new System.Drawing.Point(162, 138);
             this.dateFechaEntrega.Name = "dateFechaEntrega";
-            this.dateFechaEntrega.Size = new System.Drawing.Size(262, 22);
+            this.dateFechaEntrega.Size = new System.Drawing.Size(394, 22);
             this.dateFechaEntrega.TabIndex = 8;
             // 
             // dateFechaTentativa
             // 
             this.dateFechaTentativa.Location = new System.Drawing.Point(162, 176);
             this.dateFechaTentativa.Name = "dateFechaTentativa";
-            this.dateFechaTentativa.Size = new System.Drawing.Size(262, 22);
+            this.dateFechaTentativa.Size = new System.Drawing.Size(394, 22);
             this.dateFechaTentativa.TabIndex = 9;
-            // 
-            // dateFechaDevolucion
-            // 
-            this.dateFechaDevolucion.Location = new System.Drawing.Point(162, 213);
-            this.dateFechaDevolucion.Name = "dateFechaDevolucion";
-            this.dateFechaDevolucion.Size = new System.Drawing.Size(262, 22);
-            this.dateFechaDevolucion.TabIndex = 10;
             // 
             // label7
             // 
@@ -156,50 +118,12 @@
             this.cbEstudiante.FormattingEnabled = true;
             this.cbEstudiante.Location = new System.Drawing.Point(134, 260);
             this.cbEstudiante.Name = "cbEstudiante";
-            this.cbEstudiante.Size = new System.Drawing.Size(290, 24);
+            this.cbEstudiante.Size = new System.Drawing.Size(422, 24);
             this.cbEstudiante.TabIndex = 12;
-            // 
-            // lbNoSelec
-            // 
-            this.lbNoSelec.FormattingEnabled = true;
-            this.lbNoSelec.ItemHeight = 16;
-            this.lbNoSelec.Location = new System.Drawing.Point(43, 314);
-            this.lbNoSelec.Name = "lbNoSelec";
-            this.lbNoSelec.Size = new System.Drawing.Size(142, 148);
-            this.lbNoSelec.TabIndex = 13;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(191, 314);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 36);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(191, 356);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 37);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Quitar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lbSelec
-            // 
-            this.lbSelec.FormattingEnabled = true;
-            this.lbSelec.ItemHeight = 16;
-            this.lbSelec.Location = new System.Drawing.Point(272, 314);
-            this.lbSelec.Name = "lbSelec";
-            this.lbSelec.Size = new System.Drawing.Size(152, 148);
-            this.lbSelec.TabIndex = 16;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(147, 487);
+            this.button3.Location = new System.Drawing.Point(210, 542);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 17;
@@ -209,7 +133,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(241, 487);
+            this.button4.Location = new System.Drawing.Point(319, 542);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 23);
             this.button4.TabIndex = 18;
@@ -217,32 +141,73 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idlibro,
+            this.titulo,
+            this.tipo,
+            this.stock});
+            this.dataGridView1.Location = new System.Drawing.Point(43, 310);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(513, 204);
+            this.dataGridView1.TabIndex = 19;
+            // 
+            // idlibro
+            // 
+            this.idlibro.DataPropertyName = "idLibro";
+            this.idlibro.HeaderText = "ID";
+            this.idlibro.MinimumWidth = 6;
+            this.idlibro.Name = "idlibro";
+            this.idlibro.Width = 125;
+            // 
+            // titulo
+            // 
+            this.titulo.DataPropertyName = "titulo";
+            this.titulo.HeaderText = "Titulo";
+            this.titulo.MinimumWidth = 6;
+            this.titulo.Name = "titulo";
+            this.titulo.Width = 125;
+            // 
+            // tipo
+            // 
+            this.tipo.DataPropertyName = "tipo";
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.MinimumWidth = 6;
+            this.tipo.Name = "tipo";
+            this.tipo.Width = 125;
+            // 
+            // stock
+            // 
+            this.stock.DataPropertyName = "stock";
+            this.stock.HeaderText = "Stock";
+            this.stock.MinimumWidth = 6;
+            this.stock.Name = "stock";
+            this.stock.Width = 125;
+            // 
             // frmPrestado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 537);
+            this.ClientSize = new System.Drawing.Size(641, 596);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.lbSelec);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lbNoSelec);
             this.Controls.Add(this.cbEstudiante);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dateFechaDevolucion);
             this.Controls.Add(this.dateFechaTentativa);
             this.Controls.Add(this.dateFechaEntrega);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbEstado);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmPrestado";
             this.Text = "frmPrestado";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,21 +218,18 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateFechaEntrega;
         private System.Windows.Forms.DateTimePicker dateFechaTentativa;
-        private System.Windows.Forms.DateTimePicker dateFechaDevolucion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbEstudiante;
-        private System.Windows.Forms.ListBox lbNoSelec;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox lbSelec;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idlibro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
     }
 }

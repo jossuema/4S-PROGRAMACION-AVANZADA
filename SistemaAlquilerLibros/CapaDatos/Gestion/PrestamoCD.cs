@@ -36,7 +36,7 @@ namespace CapaDatos.Gestion
             {
                 using (DB = new BibliotecaDataContext())
                 {
-                    DB.CP_InsertarPrestamo(op.Id_prestamo, op.Estado, op.Fecha_entrega, op.Fecha_tentativa, op.Fecha_devolucion, op.Id_estudiante);
+                    DB.CP_InsertarPrestamo(op.Id_prestamo, op.Estado, op.Fecha_entrega, op.Fecha_tentativa, op.Id_estudiante);
                 }
             }
             catch (Exception ex)

@@ -68,17 +68,20 @@ namespace capavista.Formularios
         {
             try
             {
-                frmLibro frm = new frmLibro();
-                var id = Convert.ToInt32(dtgProducto.CurrentRow.Cells[0].Value);
-                var autores = ln.AutoresLibro(id);
-                frm.setDatos(id, autores);
-                frm.ShowDialog();
-                if (frm.DialogResult == DialogResult.OK)
+                if (dtgProducto.SelectedRows.Count > 0)
                 {
-                    var libro = frm.getDatos();
-                    var autoresNuevos = frm.getAutores();
-                    ln.ModificarLibro(libro, autoresNuevos);
-                    Listar();
+                    frmLibro frm = new frmLibro();
+                    var id = Convert.ToInt32(dtgProducto.CurrentRow.Cells[0].Value);
+                    var autores = ln.AutoresLibro(id);
+                    frm.setDatos(id, autores);
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                        var libro = frm.getDatos();
+                        var autoresNuevos = frm.getAutores();
+                        ln.ModificarLibro(libro, autoresNuevos);
+                        Listar();
+                    }
                 }
             }
             catch (Exception ex)

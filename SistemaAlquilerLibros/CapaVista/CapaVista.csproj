@@ -91,6 +91,12 @@
     <Compile Include="Formularios\frmAdminEstudiante.Designer.cs">
       <DependentUpon>frmAdminEstudiante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAdminKardex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAdminKardex.Designer.cs">
+      <DependentUpon>frmAdminKardex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmAdminLibro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,12 @@
     <Compile Include="Formularios\frmCategoria.Designer.cs">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmDevolucion.Designer.cs">
+      <DependentUpon>frmDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEditorial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +156,12 @@
     </Compile>
     <Compile Include="Formularios\frmEstudiante.Designer.cs">
       <DependentUpon>frmEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmKardex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmKardex.Designer.cs">
+      <DependentUpon>frmKardex.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmLibro.cs">
       <SubType>Form</SubType>
@@ -199,6 +217,9 @@
     <EmbeddedResource Include="Formularios\frmAdminEstudiante.resx">
       <DependentUpon>frmAdminEstudiante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAdminKardex.resx">
+      <DependentUpon>frmAdminKardex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmAdminLibro.resx">
       <DependentUpon>frmAdminLibro.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,11 +241,17 @@
     <EmbeddedResource Include="Formularios\frmCategoria.resx">
       <DependentUpon>frmCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmDevolucion.resx">
+      <DependentUpon>frmDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEditorial.resx">
       <DependentUpon>frmEditorial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEstudiante.resx">
       <DependentUpon>frmEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmKardex.resx">
+      <DependentUpon>frmKardex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmLibro.resx">
       <DependentUpon>frmLibro.cs</DependentUpon>

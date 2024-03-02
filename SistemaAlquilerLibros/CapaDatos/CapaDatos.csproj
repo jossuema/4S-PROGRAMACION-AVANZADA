@@ -54,6 +54,7 @@
     <Compile Include="Gestion\EditorialCD.cs" />
     <Compile Include="Gestion\EstudianteCD.cs" />
     <Compile Include="Gestion\HistorialBajaCD.cs" />
+    <Compile Include="Gestion\KardexCD.cs" />
     <Compile Include="Gestion\LibroCD.cs" />
     <Compile Include="Gestion\PrestamoCD.cs" />
     <Compile Include="Gestion\PrestamoLibroCD.cs" />

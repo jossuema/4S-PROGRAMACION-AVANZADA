@@ -12,6 +12,7 @@ namespace CapaEntidades.ClasesPersonalizadas
         public string EstadoPrestamo { get; set; }
         public DateTime FechaPrestamo { get; set; }
         public DateTime FechaDevolucion { get; set; }
+        public DateTime FechaTentativa { get; set; }
         public int IdLibro { get; set; }
         public string EstadoLibro { get; set; }
         public string NombreLibro { get; set; }

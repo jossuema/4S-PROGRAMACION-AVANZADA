@@ -45,18 +45,21 @@ namespace CapaDatos
     partial void InsertEstudiante(Estudiante instance);
     partial void UpdateEstudiante(Estudiante instance);
     partial void DeleteEstudiante(Estudiante instance);
+    partial void InsertHistorialBaja(HistorialBaja instance);
+    partial void UpdateHistorialBaja(HistorialBaja instance);
+    partial void DeleteHistorialBaja(HistorialBaja instance);
+    partial void InsertKardex(Kardex instance);
+    partial void UpdateKardex(Kardex instance);
+    partial void DeleteKardex(Kardex instance);
+    partial void InsertLibro(Libro instance);
+    partial void UpdateLibro(Libro instance);
+    partial void DeleteLibro(Libro instance);
     partial void InsertPrestamo(Prestamo instance);
     partial void UpdatePrestamo(Prestamo instance);
     partial void DeletePrestamo(Prestamo instance);
     partial void InsertPrestamo_Libro(Prestamo_Libro instance);
     partial void UpdatePrestamo_Libro(Prestamo_Libro instance);
     partial void DeletePrestamo_Libro(Prestamo_Libro instance);
-    partial void InsertHistorialBaja(HistorialBaja instance);
-    partial void UpdateHistorialBaja(HistorialBaja instance);
-    partial void DeleteHistorialBaja(HistorialBaja instance);
-    partial void InsertLibro(Libro instance);
-    partial void UpdateLibro(Libro instance);
-    partial void DeleteLibro(Libro instance);
     #endregion
 		
 		public BibliotecaDataContext() : 
@@ -129,6 +132,30 @@ namespace CapaDatos
 			}
 		}
 		
+		public System.Data.Linq.Table<HistorialBaja> HistorialBajas
+		{
+			get
+			{
+				return this.GetTable<HistorialBaja>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Kardex> Kardexes
+		{
+			get
+			{
+				return this.GetTable<Kardex>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Libro> Libros
+		{
+			get
+			{
+				return this.GetTable<Libro>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Prestamo> Prestamos
 		{
 			get
@@ -145,26 +172,17 @@ namespace CapaDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<HistorialBaja> HistorialBajas
-		{
-			get
-			{
-				return this.GetTable<HistorialBaja>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Libro> Libros
-		{
-			get
-			{
-				return this.GetTable<Libro>();
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarAutor")]
 		public int CP_ActualizarAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> sexo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_nacimiento)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor, estado, nombre, apellido, sexo, fecha_nacimiento);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarBajaLibro")]
+		public int CP_ActualizarBajaLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string motivo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> decremento_stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_baja, id_libro, fecha_baja, motivo, decremento_stock);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -189,10 +207,94 @@ namespace CapaDatos
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarKardex")]
+		public int CP_ActualizarKardex([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_kardex, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string detalle, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> entrada, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> salida, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> total)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_kardex, id_libro, fecha, detalle, entrada, salida, total);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarLibro")]
+		public int CP_ActualizarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial, stock);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarPrestamo")]
+		public int CP_ActualizarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_prestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_entrega, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_tentativa, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_devolucion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_prestamo, estado, fecha_entrega, fecha_tentativa, fecha_devolucion, id_estudiante);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarCategoria")]
+		public ISingleResult<CP_BuscarCategoriaResult> CP_BuscarCategoria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
+			return ((ISingleResult<CP_BuscarCategoriaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarEditorial")]
+		public ISingleResult<CP_BuscarEditorialResult> CP_BuscarEditorial([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
+			return ((ISingleResult<CP_BuscarEditorialResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarHistorialBaja")]
+		public ISingleResult<CP_BuscarHistorialBajaResult> CP_BuscarHistorialBaja([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro);
+			return ((ISingleResult<CP_BuscarHistorialBajaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarKardex")]
+		public ISingleResult<CP_BuscarKardexResult> CP_BuscarKardex([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_kardex)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_kardex);
+			return ((ISingleResult<CP_BuscarKardexResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarKardexPorLibro")]
+		public ISingleResult<CP_BuscarKardexPorLibroResult> CP_BuscarKardexPorLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro);
+			return ((ISingleResult<CP_BuscarKardexPorLibroResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarLibro")]
+		public ISingleResult<CP_BuscarLibroResult> CP_BuscarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
+			return ((ISingleResult<CP_BuscarLibroResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarPrestamo")]
+		public ISingleResult<CP_BuscarPrestamoResult> CP_BuscarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
+			return ((ISingleResult<CP_BuscarPrestamoResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarAutor")]
 		public int CP_EliminarAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarAutorLibro")]
+		public int CP_EliminarAutorLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarAutoryLibro")]
+		public int CP_EliminarAutoryLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor, id_libro);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -217,94 +319,17 @@ namespace CapaDatos
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarAutor")]
-		public int CP_InsertarAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> sexo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_nacimiento)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarHistorialBaja")]
+		public int CP_EliminarHistorialBaja([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_baja)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor, estado, nombre, apellido, sexo, fecha_nacimiento);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_baja);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarCategoria")]
-		public int CP_InsertarCategoria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(255)")] string descripcion)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarKardex")]
+		public int CP_EliminarKardex([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_kardex)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_categoria, nombre, descripcion);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarEditorial")]
-		public int CP_InsertarEditorial([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pais)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_editorial, nombre, pais);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarEstudiante")]
-		public int CP_InsertarEstudiante([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_nacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> sexo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado_civil, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_estudiante, cedula, nombre, apellido, fecha_nacimiento, sexo, estado_civil, estado);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarAutores")]
-		public ISingleResult<CP_ListarAutoresResult> CP_ListarAutores([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
-			return ((ISingleResult<CP_ListarAutoresResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarCategorias")]
-		public ISingleResult<CP_ListarCategoriasResult> CP_ListarCategorias([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
-			return ((ISingleResult<CP_ListarCategoriasResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarEditoriales")]
-		public ISingleResult<CP_ListarEditorialesResult> CP_ListarEditoriales([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
-			return ((ISingleResult<CP_ListarEditorialesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarEstudiantes")]
-		public ISingleResult<CP_ListarEstudiantesResult> CP_ListarEstudiantes([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
-			return ((ISingleResult<CP_ListarEstudiantesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibrosCategoria")]
-		public ISingleResult<CP_ListarLibrosCategoriaResult> CP_ListarLibrosCategoria()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<CP_ListarLibrosCategoriaResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarVistaLibro")]
-		public ISingleResult<CP_ListarVistaLibroResult> CP_ListarVistaLibro()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<CP_ListarVistaLibroResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarVistaLibro2")]
-		public ISingleResult<CP_ListarVistaLibro2Result> CP_ListarVistaLibro2([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(40)")] string val)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), val);
-			return ((ISingleResult<CP_ListarVistaLibro2Result>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarPrestamo")]
-		public int CP_ActualizarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_prestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_entrega, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_tentativa, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_devolucion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_prestamo, estado, fecha_entrega, fecha_tentativa, fecha_devolucion, id_estudiante);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarAutorLibro")]
-		public int CP_EliminarAutorLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_kardex);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -343,6 +368,34 @@ namespace CapaDatos
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarPrestamoYLibro")]
+		public int CP_EliminarPrestamoYLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPrestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idLibro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPrestamo, idLibro);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarAutor")]
+		public int CP_InsertarAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> sexo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_nacimiento)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor, estado, nombre, apellido, sexo, fecha_nacimiento);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarEstudiante")]
+		public ISingleResult<CP_BuscarEstudianteResult> CP_BuscarEstudiante([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
+			return ((ISingleResult<CP_BuscarEstudianteResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarAutor")]
+		public ISingleResult<CP_BuscarAutorResult> CP_BuscarAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
+			return ((ISingleResult<CP_BuscarAutorResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarAutorLibro")]
 		public int CP_InsertarAutorLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
 		{
@@ -350,10 +403,45 @@ namespace CapaDatos
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarPrestamo")]
-		public int CP_InsertarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_prestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_entrega, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_tentativa, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_devolucion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarCategoria")]
+		public int CP_InsertarCategoria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(255)")] string descripcion)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_prestamo, estado, fecha_entrega, fecha_tentativa, fecha_devolucion, id_estudiante);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_categoria, nombre, descripcion);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarEditorial")]
+		public int CP_InsertarEditorial([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string pais)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_editorial, nombre, pais);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarEstudiante")]
+		public int CP_InsertarEstudiante([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_nacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> sexo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado_civil, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_estudiante, cedula, nombre, apellido, fecha_nacimiento, sexo, estado_civil, estado);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarKardex")]
+		public int CP_InsertarKardex([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string detalle, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> entrada, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> salida, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> total)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, fecha, detalle, entrada, salida, total);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarLibro")]
+		public int CP_InsertarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> stock)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial, stock);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarPrestamo")]
+		public int CP_InsertarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_prestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_entrega, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_tentativa, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_estudiante)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_prestamo, estado, fecha_entrega, fecha_tentativa, id_estudiante);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -364,6 +452,13 @@ namespace CapaDatos
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarAutores")]
+		public ISingleResult<CP_ListarAutoresResult> CP_ListarAutores([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
+			return ((ISingleResult<CP_ListarAutoresResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarAutorLibro")]
 		public ISingleResult<CP_ListarAutorLibroResult> CP_ListarAutorLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
 		{
@@ -371,11 +466,46 @@ namespace CapaDatos
 			return ((ISingleResult<CP_ListarAutorLibroResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibroAutor")]
-		public ISingleResult<CP_ListarLibroAutorResult> CP_ListarLibroAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarCategorias")]
+		public ISingleResult<CP_ListarCategoriasResult> CP_ListarCategorias([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
-			return ((ISingleResult<CP_ListarLibroAutorResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
+			return ((ISingleResult<CP_ListarCategoriasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarEditoriales")]
+		public ISingleResult<CP_ListarEditorialesResult> CP_ListarEditoriales([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
+			return ((ISingleResult<CP_ListarEditorialesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarEstudiantes")]
+		public ISingleResult<CP_ListarEstudiantesResult> CP_ListarEstudiantes([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
+			return ((ISingleResult<CP_ListarEstudiantesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarKardex")]
+		public ISingleResult<CP_ListarKardexResult> CP_ListarKardex()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<CP_ListarKardexResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarHistorialBajas")]
+		public ISingleResult<CP_ListarHistorialBajasResult> CP_ListarHistorialBajas()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<CP_ListarHistorialBajasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibroPersonaPersonalizado")]
+		public ISingleResult<CP_ListarLibroPersonaPersonalizadoResult> CP_ListarLibroPersonaPersonalizado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(25)")] string valor)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), valor);
+			return ((ISingleResult<CP_ListarLibroPersonaPersonalizadoResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibroPrestamo")]
@@ -385,11 +515,32 @@ namespace CapaDatos
 			return ((ISingleResult<CP_ListarLibroPrestamoResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibroAutor")]
+		public ISingleResult<CP_ListarLibroAutorResult> CP_ListarLibroAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<CP_ListarLibroAutorResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibros")]
 		public ISingleResult<CP_ListarLibrosResult> CP_ListarLibros([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string filtro)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), filtro);
 			return ((ISingleResult<CP_ListarLibrosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibrosCategoria")]
+		public ISingleResult<CP_ListarLibrosCategoriaResult> CP_ListarLibrosCategoria()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<CP_ListarLibrosCategoriaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibrosDisponibles")]
+		public ISingleResult<CP_ListarLibrosDisponiblesResult> CP_ListarLibrosDisponibles()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<CP_ListarLibrosDisponiblesResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarPrestamoLibro")]
@@ -413,122 +564,24 @@ namespace CapaDatos
 			return ((ISingleResult<CP_ListarPrestamosFechaResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarAutor")]
-		public ISingleResult<CP_BuscarAutorResult> CP_BuscarAutor([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
-			return ((ISingleResult<CP_BuscarAutorResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarCategoria")]
-		public ISingleResult<CP_BuscarCategoriaResult> CP_BuscarCategoria([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
-			return ((ISingleResult<CP_BuscarCategoriaResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarEditorial")]
-		public ISingleResult<CP_BuscarEditorialResult> CP_BuscarEditorial([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
-			return ((ISingleResult<CP_BuscarEditorialResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarEstudiante")]
-		public ISingleResult<CP_BuscarEstudianteResult> CP_BuscarEstudiante([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
-			return ((ISingleResult<CP_BuscarEstudianteResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarLibro")]
-		public ISingleResult<CP_BuscarLibroResult> CP_BuscarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
-			return ((ISingleResult<CP_BuscarLibroResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarPrestamo")]
-		public ISingleResult<CP_BuscarPrestamoResult> CP_BuscarPrestamo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), clave);
-			return ((ISingleResult<CP_BuscarPrestamoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarLibrosDisponibles")]
-		public ISingleResult<CP_ListarLibrosDisponiblesResult> CP_ListarLibrosDisponibles()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarVistaLibro")]
+		public ISingleResult<CP_ListarVistaLibroResult> CP_ListarVistaLibro()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<CP_ListarLibrosDisponiblesResult>)(result.ReturnValue));
+			return ((ISingleResult<CP_ListarVistaLibroResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarAutoryLibro")]
-		public int CP_EliminarAutoryLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_autor, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarVistaLibro2")]
+		public ISingleResult<CP_ListarVistaLibro2Result> CP_ListarVistaLibro2([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(40)")] string val)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_autor, id_libro);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarPrestamoYLibro")]
-		public int CP_EliminarPrestamoYLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPrestamo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idLibro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPrestamo, idLibro);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_BuscarHistorialBaja")]
-		public ISingleResult<CP_BuscarHistorialBajaResult> CP_BuscarHistorialBaja([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro);
-			return ((ISingleResult<CP_BuscarHistorialBajaResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarHistorialBaja")]
-		public int CP_EliminarHistorialBaja([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_baja)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_baja);
-			return ((int)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), val);
+			return ((ISingleResult<CP_ListarVistaLibro2Result>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DarDeBajaLibro")]
 		public int DarDeBajaLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string motivo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> decremento_stock)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, fecha_baja, motivo, decremento_stock);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_EliminarLibro")]
-		public int CP_EliminarLibro1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_InsertarLibro")]
-		public int CP_InsertarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> stock)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial, stock);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarLibro")]
-		public int CP_ActualizarLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> anio, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string tipo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_categoria, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_editorial, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> stock)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_libro, estado, anio, tipo, nombre, id_categoria, id_editorial, stock);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ListarHistorialBajas")]
-		public ISingleResult<CP_ListarHistorialBajasResult> CP_ListarHistorialBajas()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<CP_ListarHistorialBajasResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CP_ActualizarBajaLibro")]
-		public int CP_ActualizarBajaLibro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_libro, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> fecha_baja, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string motivo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> decremento_stock)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_baja, id_libro, fecha_baja, motivo, decremento_stock);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -1445,425 +1498,6 @@ namespace CapaDatos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Prestamo")]
-	public partial class Prestamo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_prestamo;
-		
-		private string _estado;
-		
-		private System.DateTime _fecha_entrega;
-		
-		private System.DateTime _fecha_tentativa;
-		
-		private System.DateTime _fecha_devolucion;
-		
-		private int _id_estudiante;
-		
-		private EntitySet<Prestamo_Libro> _Prestamo_Libros;
-		
-		private EntityRef<Estudiante> _Estudiante;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_prestamoChanging(int value);
-    partial void Onid_prestamoChanged();
-    partial void OnestadoChanging(string value);
-    partial void OnestadoChanged();
-    partial void Onfecha_entregaChanging(System.DateTime value);
-    partial void Onfecha_entregaChanged();
-    partial void Onfecha_tentativaChanging(System.DateTime value);
-    partial void Onfecha_tentativaChanged();
-    partial void Onfecha_devolucionChanging(System.DateTime value);
-    partial void Onfecha_devolucionChanged();
-    partial void Onid_estudianteChanging(int value);
-    partial void Onid_estudianteChanged();
-    #endregion
-		
-		public Prestamo()
-		{
-			this._Prestamo_Libros = new EntitySet<Prestamo_Libro>(new Action<Prestamo_Libro>(this.attach_Prestamo_Libros), new Action<Prestamo_Libro>(this.detach_Prestamo_Libros));
-			this._Estudiante = default(EntityRef<Estudiante>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					this.Onid_prestamoChanging(value);
-					this.SendPropertyChanging();
-					this._id_prestamo = value;
-					this.SendPropertyChanged("id_prestamo");
-					this.Onid_prestamoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this.OnestadoChanging(value);
-					this.SendPropertyChanging();
-					this._estado = value;
-					this.SendPropertyChanged("estado");
-					this.OnestadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_entrega
-		{
-			get
-			{
-				return this._fecha_entrega;
-			}
-			set
-			{
-				if ((this._fecha_entrega != value))
-				{
-					this.Onfecha_entregaChanging(value);
-					this.SendPropertyChanging();
-					this._fecha_entrega = value;
-					this.SendPropertyChanged("fecha_entrega");
-					this.Onfecha_entregaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_tentativa
-		{
-			get
-			{
-				return this._fecha_tentativa;
-			}
-			set
-			{
-				if ((this._fecha_tentativa != value))
-				{
-					this.Onfecha_tentativaChanging(value);
-					this.SendPropertyChanging();
-					this._fecha_tentativa = value;
-					this.SendPropertyChanged("fecha_tentativa");
-					this.Onfecha_tentativaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_devolucion
-		{
-			get
-			{
-				return this._fecha_devolucion;
-			}
-			set
-			{
-				if ((this._fecha_devolucion != value))
-				{
-					this.Onfecha_devolucionChanging(value);
-					this.SendPropertyChanging();
-					this._fecha_devolucion = value;
-					this.SendPropertyChanged("fecha_devolucion");
-					this.Onfecha_devolucionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
-		public int id_estudiante
-		{
-			get
-			{
-				return this._id_estudiante;
-			}
-			set
-			{
-				if ((this._id_estudiante != value))
-				{
-					if (this._Estudiante.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_estudianteChanging(value);
-					this.SendPropertyChanging();
-					this._id_estudiante = value;
-					this.SendPropertyChanged("id_estudiante");
-					this.Onid_estudianteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prestamo_Prestamo_Libro", Storage="_Prestamo_Libros", ThisKey="id_prestamo", OtherKey="id_prestamo")]
-		public EntitySet<Prestamo_Libro> Prestamo_Libros
-		{
-			get
-			{
-				return this._Prestamo_Libros;
-			}
-			set
-			{
-				this._Prestamo_Libros.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estudiante_Prestamo", Storage="_Estudiante", ThisKey="id_estudiante", OtherKey="id_estudiante", IsForeignKey=true)]
-		public Estudiante Estudiante
-		{
-			get
-			{
-				return this._Estudiante.Entity;
-			}
-			set
-			{
-				Estudiante previousValue = this._Estudiante.Entity;
-				if (((previousValue != value) 
-							|| (this._Estudiante.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Estudiante.Entity = null;
-						previousValue.Prestamos.Remove(this);
-					}
-					this._Estudiante.Entity = value;
-					if ((value != null))
-					{
-						value.Prestamos.Add(this);
-						this._id_estudiante = value.id_estudiante;
-					}
-					else
-					{
-						this._id_estudiante = default(int);
-					}
-					this.SendPropertyChanged("Estudiante");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Prestamo_Libros(Prestamo_Libro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Prestamo = this;
-		}
-		
-		private void detach_Prestamo_Libros(Prestamo_Libro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Prestamo = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Prestamo Libro]")]
-	public partial class Prestamo_Libro : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_prestamo;
-		
-		private int _id_libro;
-		
-		private EntityRef<Prestamo> _Prestamo;
-		
-		private EntityRef<Libro> _Libro;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_prestamoChanging(int value);
-    partial void Onid_prestamoChanged();
-    partial void Onid_libroChanging(int value);
-    partial void Onid_libroChanged();
-    #endregion
-		
-		public Prestamo_Libro()
-		{
-			this._Prestamo = default(EntityRef<Prestamo>);
-			this._Libro = default(EntityRef<Libro>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					if (this._Prestamo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_prestamoChanging(value);
-					this.SendPropertyChanging();
-					this._id_prestamo = value;
-					this.SendPropertyChanged("id_prestamo");
-					this.Onid_prestamoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					if (this._Libro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_libroChanging(value);
-					this.SendPropertyChanging();
-					this._id_libro = value;
-					this.SendPropertyChanged("id_libro");
-					this.Onid_libroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prestamo_Prestamo_Libro", Storage="_Prestamo", ThisKey="id_prestamo", OtherKey="id_prestamo", IsForeignKey=true)]
-		public Prestamo Prestamo
-		{
-			get
-			{
-				return this._Prestamo.Entity;
-			}
-			set
-			{
-				Prestamo previousValue = this._Prestamo.Entity;
-				if (((previousValue != value) 
-							|| (this._Prestamo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Prestamo.Entity = null;
-						previousValue.Prestamo_Libros.Remove(this);
-					}
-					this._Prestamo.Entity = value;
-					if ((value != null))
-					{
-						value.Prestamo_Libros.Add(this);
-						this._id_prestamo = value.id_prestamo;
-					}
-					else
-					{
-						this._id_prestamo = default(int);
-					}
-					this.SendPropertyChanged("Prestamo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Libro", ThisKey="id_libro", OtherKey="id_libro", IsForeignKey=true)]
-		public Libro Libro
-		{
-			get
-			{
-				return this._Libro.Entity;
-			}
-			set
-			{
-				Libro previousValue = this._Libro.Entity;
-				if (((previousValue != value) 
-							|| (this._Libro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Libro.Entity = null;
-						previousValue.Prestamo_Libros.Remove(this);
-					}
-					this._Libro.Entity = value;
-					if ((value != null))
-					{
-						value.Prestamo_Libros.Add(this);
-						this._id_libro = value.id_libro;
-					}
-					else
-					{
-						this._id_libro = default(int);
-					}
-					this.SendPropertyChanged("Libro");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HistorialBajas")]
 	public partial class HistorialBaja : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2063,6 +1697,253 @@ namespace CapaDatos
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Kardex")]
+	public partial class Kardex : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_kardex;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha;
+		
+		private string _detalle;
+		
+		private int _entrada;
+		
+		private int _salida;
+		
+		private int _total;
+		
+		private EntityRef<Libro> _Libro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_kardexChanging(int value);
+    partial void Onid_kardexChanged();
+    partial void Onid_libroChanging(int value);
+    partial void Onid_libroChanged();
+    partial void OnfechaChanging(System.DateTime value);
+    partial void OnfechaChanged();
+    partial void OndetalleChanging(string value);
+    partial void OndetalleChanged();
+    partial void OnentradaChanging(int value);
+    partial void OnentradaChanged();
+    partial void OnsalidaChanging(int value);
+    partial void OnsalidaChanged();
+    partial void OntotalChanging(int value);
+    partial void OntotalChanged();
+    #endregion
+		
+		public Kardex()
+		{
+			this._Libro = default(EntityRef<Libro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_kardex", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_kardex
+		{
+			get
+			{
+				return this._id_kardex;
+			}
+			set
+			{
+				if ((this._id_kardex != value))
+				{
+					this.Onid_kardexChanging(value);
+					this.SendPropertyChanging();
+					this._id_kardex = value;
+					this.SendPropertyChanged("id_kardex");
+					this.Onid_kardexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					if (this._Libro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_libroChanging(value);
+					this.SendPropertyChanging();
+					this._id_libro = value;
+					this.SendPropertyChanged("id_libro");
+					this.Onid_libroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="Date NOT NULL")]
+		public System.DateTime fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this.OnfechaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha = value;
+					this.SendPropertyChanged("fecha");
+					this.OnfechaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_detalle", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string detalle
+		{
+			get
+			{
+				return this._detalle;
+			}
+			set
+			{
+				if ((this._detalle != value))
+				{
+					this.OndetalleChanging(value);
+					this.SendPropertyChanging();
+					this._detalle = value;
+					this.SendPropertyChanged("detalle");
+					this.OndetalleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_entrada", DbType="Int NOT NULL")]
+		public int entrada
+		{
+			get
+			{
+				return this._entrada;
+			}
+			set
+			{
+				if ((this._entrada != value))
+				{
+					this.OnentradaChanging(value);
+					this.SendPropertyChanging();
+					this._entrada = value;
+					this.SendPropertyChanged("entrada");
+					this.OnentradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salida", DbType="Int NOT NULL")]
+		public int salida
+		{
+			get
+			{
+				return this._salida;
+			}
+			set
+			{
+				if ((this._salida != value))
+				{
+					this.OnsalidaChanging(value);
+					this.SendPropertyChanging();
+					this._salida = value;
+					this.SendPropertyChanged("salida");
+					this.OnsalidaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Int NOT NULL")]
+		public int total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this.OntotalChanging(value);
+					this.SendPropertyChanging();
+					this._total = value;
+					this.SendPropertyChanged("total");
+					this.OntotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Kardex", Storage="_Libro", ThisKey="id_libro", OtherKey="id_libro", IsForeignKey=true)]
+		public Libro Libro
+		{
+			get
+			{
+				return this._Libro.Entity;
+			}
+			set
+			{
+				Libro previousValue = this._Libro.Entity;
+				if (((previousValue != value) 
+							|| (this._Libro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Libro.Entity = null;
+						previousValue.Kardexes.Remove(this);
+					}
+					this._Libro.Entity = value;
+					if ((value != null))
+					{
+						value.Kardexes.Add(this);
+						this._id_libro = value.id_libro;
+					}
+					else
+					{
+						this._id_libro = default(int);
+					}
+					this.SendPropertyChanged("Libro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Libro")]
 	public partial class Libro : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2087,9 +1968,11 @@ namespace CapaDatos
 		
 		private EntitySet<Autor_Libro> _Autor_Libros;
 		
-		private EntitySet<Prestamo_Libro> _Prestamo_Libros;
-		
 		private EntitySet<HistorialBaja> _HistorialBajas;
+		
+		private EntitySet<Kardex> _Kardexes;
+		
+		private EntitySet<Prestamo_Libro> _Prestamo_Libros;
 		
 		private EntityRef<Categoria> _Categoria;
 		
@@ -2120,8 +2003,9 @@ namespace CapaDatos
 		public Libro()
 		{
 			this._Autor_Libros = new EntitySet<Autor_Libro>(new Action<Autor_Libro>(this.attach_Autor_Libros), new Action<Autor_Libro>(this.detach_Autor_Libros));
-			this._Prestamo_Libros = new EntitySet<Prestamo_Libro>(new Action<Prestamo_Libro>(this.attach_Prestamo_Libros), new Action<Prestamo_Libro>(this.detach_Prestamo_Libros));
 			this._HistorialBajas = new EntitySet<HistorialBaja>(new Action<HistorialBaja>(this.attach_HistorialBajas), new Action<HistorialBaja>(this.detach_HistorialBajas));
+			this._Kardexes = new EntitySet<Kardex>(new Action<Kardex>(this.attach_Kardexes), new Action<Kardex>(this.detach_Kardexes));
+			this._Prestamo_Libros = new EntitySet<Prestamo_Libro>(new Action<Prestamo_Libro>(this.attach_Prestamo_Libros), new Action<Prestamo_Libro>(this.detach_Prestamo_Libros));
 			this._Categoria = default(EntityRef<Categoria>);
 			this._Editorial = default(EntityRef<Editorial>);
 			OnCreated();
@@ -2308,19 +2192,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Prestamo_Libros", ThisKey="id_libro", OtherKey="id_libro")]
-		public EntitySet<Prestamo_Libro> Prestamo_Libros
-		{
-			get
-			{
-				return this._Prestamo_Libros;
-			}
-			set
-			{
-				this._Prestamo_Libros.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_HistorialBaja", Storage="_HistorialBajas", ThisKey="id_libro", OtherKey="id_libro")]
 		public EntitySet<HistorialBaja> HistorialBajas
 		{
@@ -2331,6 +2202,32 @@ namespace CapaDatos
 			set
 			{
 				this._HistorialBajas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Kardex", Storage="_Kardexes", ThisKey="id_libro", OtherKey="id_libro")]
+		public EntitySet<Kardex> Kardexes
+		{
+			get
+			{
+				return this._Kardexes;
+			}
+			set
+			{
+				this._Kardexes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Prestamo_Libros", ThisKey="id_libro", OtherKey="id_libro")]
+		public EntitySet<Prestamo_Libro> Prestamo_Libros
+		{
+			get
+			{
+				return this._Prestamo_Libros;
+			}
+			set
+			{
+				this._Prestamo_Libros.Assign(value);
 			}
 		}
 		
@@ -2434,6 +2331,30 @@ namespace CapaDatos
 			entity.Libro = null;
 		}
 		
+		private void attach_HistorialBajas(HistorialBaja entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = this;
+		}
+		
+		private void detach_HistorialBajas(HistorialBaja entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = null;
+		}
+		
+		private void attach_Kardexes(Kardex entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = this;
+		}
+		
+		private void detach_Kardexes(Kardex entity)
+		{
+			this.SendPropertyChanging();
+			entity.Libro = null;
+		}
+		
 		private void attach_Prestamo_Libros(Prestamo_Libro entity)
 		{
 			this.SendPropertyChanging();
@@ -2445,17 +2366,1450 @@ namespace CapaDatos
 			this.SendPropertyChanging();
 			entity.Libro = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Prestamo")]
+	public partial class Prestamo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_HistorialBajas(HistorialBaja entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_prestamo;
+		
+		private string _estado;
+		
+		private System.DateTime _fecha_entrega;
+		
+		private System.DateTime _fecha_tentativa;
+		
+		private System.DateTime _fecha_devolucion;
+		
+		private int _id_estudiante;
+		
+		private EntitySet<Prestamo_Libro> _Prestamo_Libros;
+		
+		private EntityRef<Estudiante> _Estudiante;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_prestamoChanging(int value);
+    partial void Onid_prestamoChanged();
+    partial void OnestadoChanging(string value);
+    partial void OnestadoChanged();
+    partial void Onfecha_entregaChanging(System.DateTime value);
+    partial void Onfecha_entregaChanged();
+    partial void Onfecha_tentativaChanging(System.DateTime value);
+    partial void Onfecha_tentativaChanged();
+    partial void Onfecha_devolucionChanging(System.DateTime value);
+    partial void Onfecha_devolucionChanged();
+    partial void Onid_estudianteChanging(int value);
+    partial void Onid_estudianteChanged();
+    #endregion
+		
+		public Prestamo()
 		{
-			this.SendPropertyChanging();
-			entity.Libro = this;
+			this._Prestamo_Libros = new EntitySet<Prestamo_Libro>(new Action<Prestamo_Libro>(this.attach_Prestamo_Libros), new Action<Prestamo_Libro>(this.detach_Prestamo_Libros));
+			this._Estudiante = default(EntityRef<Estudiante>);
+			OnCreated();
 		}
 		
-		private void detach_HistorialBajas(HistorialBaja entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					this.Onid_prestamoChanging(value);
+					this.SendPropertyChanging();
+					this._id_prestamo = value;
+					this.SendPropertyChanged("id_prestamo");
+					this.Onid_prestamoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this.OnestadoChanging(value);
+					this.SendPropertyChanging();
+					this._estado = value;
+					this.SendPropertyChanged("estado");
+					this.OnestadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="Date NOT NULL")]
+		public System.DateTime fecha_entrega
+		{
+			get
+			{
+				return this._fecha_entrega;
+			}
+			set
+			{
+				if ((this._fecha_entrega != value))
+				{
+					this.Onfecha_entregaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha_entrega = value;
+					this.SendPropertyChanged("fecha_entrega");
+					this.Onfecha_entregaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="Date NOT NULL")]
+		public System.DateTime fecha_tentativa
+		{
+			get
+			{
+				return this._fecha_tentativa;
+			}
+			set
+			{
+				if ((this._fecha_tentativa != value))
+				{
+					this.Onfecha_tentativaChanging(value);
+					this.SendPropertyChanging();
+					this._fecha_tentativa = value;
+					this.SendPropertyChanged("fecha_tentativa");
+					this.Onfecha_tentativaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="Date NOT NULL")]
+		public System.DateTime fecha_devolucion
+		{
+			get
+			{
+				return this._fecha_devolucion;
+			}
+			set
+			{
+				if ((this._fecha_devolucion != value))
+				{
+					this.Onfecha_devolucionChanging(value);
+					this.SendPropertyChanging();
+					this._fecha_devolucion = value;
+					this.SendPropertyChanged("fecha_devolucion");
+					this.Onfecha_devolucionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
+		public int id_estudiante
+		{
+			get
+			{
+				return this._id_estudiante;
+			}
+			set
+			{
+				if ((this._id_estudiante != value))
+				{
+					if (this._Estudiante.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_estudianteChanging(value);
+					this.SendPropertyChanging();
+					this._id_estudiante = value;
+					this.SendPropertyChanged("id_estudiante");
+					this.Onid_estudianteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prestamo_Prestamo_Libro", Storage="_Prestamo_Libros", ThisKey="id_prestamo", OtherKey="id_prestamo")]
+		public EntitySet<Prestamo_Libro> Prestamo_Libros
+		{
+			get
+			{
+				return this._Prestamo_Libros;
+			}
+			set
+			{
+				this._Prestamo_Libros.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Estudiante_Prestamo", Storage="_Estudiante", ThisKey="id_estudiante", OtherKey="id_estudiante", IsForeignKey=true)]
+		public Estudiante Estudiante
+		{
+			get
+			{
+				return this._Estudiante.Entity;
+			}
+			set
+			{
+				Estudiante previousValue = this._Estudiante.Entity;
+				if (((previousValue != value) 
+							|| (this._Estudiante.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Estudiante.Entity = null;
+						previousValue.Prestamos.Remove(this);
+					}
+					this._Estudiante.Entity = value;
+					if ((value != null))
+					{
+						value.Prestamos.Add(this);
+						this._id_estudiante = value.id_estudiante;
+					}
+					else
+					{
+						this._id_estudiante = default(int);
+					}
+					this.SendPropertyChanged("Estudiante");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Prestamo_Libros(Prestamo_Libro entity)
 		{
 			this.SendPropertyChanging();
-			entity.Libro = null;
+			entity.Prestamo = this;
+		}
+		
+		private void detach_Prestamo_Libros(Prestamo_Libro entity)
+		{
+			this.SendPropertyChanging();
+			entity.Prestamo = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Prestamo Libro]")]
+	public partial class Prestamo_Libro : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_prestamo;
+		
+		private int _id_libro;
+		
+		private EntityRef<Libro> _Libro;
+		
+		private EntityRef<Prestamo> _Prestamo;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_prestamoChanging(int value);
+    partial void Onid_prestamoChanged();
+    partial void Onid_libroChanging(int value);
+    partial void Onid_libroChanged();
+    #endregion
+		
+		public Prestamo_Libro()
+		{
+			this._Libro = default(EntityRef<Libro>);
+			this._Prestamo = default(EntityRef<Prestamo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					if (this._Prestamo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_prestamoChanging(value);
+					this.SendPropertyChanging();
+					this._id_prestamo = value;
+					this.SendPropertyChanged("id_prestamo");
+					this.Onid_prestamoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					if (this._Libro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_libroChanging(value);
+					this.SendPropertyChanging();
+					this._id_libro = value;
+					this.SendPropertyChanged("id_libro");
+					this.Onid_libroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Libro_Prestamo_Libro", Storage="_Libro", ThisKey="id_libro", OtherKey="id_libro", IsForeignKey=true)]
+		public Libro Libro
+		{
+			get
+			{
+				return this._Libro.Entity;
+			}
+			set
+			{
+				Libro previousValue = this._Libro.Entity;
+				if (((previousValue != value) 
+							|| (this._Libro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Libro.Entity = null;
+						previousValue.Prestamo_Libros.Remove(this);
+					}
+					this._Libro.Entity = value;
+					if ((value != null))
+					{
+						value.Prestamo_Libros.Add(this);
+						this._id_libro = value.id_libro;
+					}
+					else
+					{
+						this._id_libro = default(int);
+					}
+					this.SendPropertyChanged("Libro");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prestamo_Prestamo_Libro", Storage="_Prestamo", ThisKey="id_prestamo", OtherKey="id_prestamo", IsForeignKey=true)]
+		public Prestamo Prestamo
+		{
+			get
+			{
+				return this._Prestamo.Entity;
+			}
+			set
+			{
+				Prestamo previousValue = this._Prestamo.Entity;
+				if (((previousValue != value) 
+							|| (this._Prestamo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Prestamo.Entity = null;
+						previousValue.Prestamo_Libros.Remove(this);
+					}
+					this._Prestamo.Entity = value;
+					if ((value != null))
+					{
+						value.Prestamo_Libros.Add(this);
+						this._id_prestamo = value.id_prestamo;
+					}
+					else
+					{
+						this._id_prestamo = default(int);
+					}
+					this.SendPropertyChanged("Prestamo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class CP_BuscarCategoriaResult
+	{
+		
+		private int _id_categoria;
+		
+		private string _nombre;
+		
+		private string _descripcion;
+		
+		public CP_BuscarCategoriaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
+		public int id_categoria
+		{
+			get
+			{
+				return this._id_categoria;
+			}
+			set
+			{
+				if ((this._id_categoria != value))
+				{
+					this._id_categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarEditorialResult
+	{
+		
+		private int _id_editorial;
+		
+		private string _nombre;
+		
+		private string _pais;
+		
+		public CP_BuscarEditorialResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
+		public int id_editorial
+		{
+			get
+			{
+				return this._id_editorial;
+			}
+			set
+			{
+				if ((this._id_editorial != value))
+				{
+					this._id_editorial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pais", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pais
+		{
+			get
+			{
+				return this._pais;
+			}
+			set
+			{
+				if ((this._pais != value))
+				{
+					this._pais = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarHistorialBajaResult
+	{
+		
+		private int _id_baja;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha_baja;
+		
+		private string _motivo;
+		
+		private int _decremento_stock;
+		
+		public CP_BuscarHistorialBajaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", DbType="Int NOT NULL")]
+		public int id_baja
+		{
+			get
+			{
+				return this._id_baja;
+			}
+			set
+			{
+				if ((this._id_baja != value))
+				{
+					this._id_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_baja
+		{
+			get
+			{
+				return this._fecha_baja;
+			}
+			set
+			{
+				if ((this._fecha_baja != value))
+				{
+					this._fecha_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
+		public string motivo
+		{
+			get
+			{
+				return this._motivo;
+			}
+			set
+			{
+				if ((this._motivo != value))
+				{
+					this._motivo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
+		public int decremento_stock
+		{
+			get
+			{
+				return this._decremento_stock;
+			}
+			set
+			{
+				if ((this._decremento_stock != value))
+				{
+					this._decremento_stock = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarKardexResult
+	{
+		
+		private int _id_kardex;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha;
+		
+		private string _detalle;
+		
+		private int _entrada;
+		
+		private int _salida;
+		
+		private int _total;
+		
+		public CP_BuscarKardexResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_kardex", DbType="Int NOT NULL")]
+		public int id_kardex
+		{
+			get
+			{
+				return this._id_kardex;
+			}
+			set
+			{
+				if ((this._id_kardex != value))
+				{
+					this._id_kardex = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="Date NOT NULL")]
+		public System.DateTime fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this._fecha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_detalle", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string detalle
+		{
+			get
+			{
+				return this._detalle;
+			}
+			set
+			{
+				if ((this._detalle != value))
+				{
+					this._detalle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_entrada", DbType="Int NOT NULL")]
+		public int entrada
+		{
+			get
+			{
+				return this._entrada;
+			}
+			set
+			{
+				if ((this._entrada != value))
+				{
+					this._entrada = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salida", DbType="Int NOT NULL")]
+		public int salida
+		{
+			get
+			{
+				return this._salida;
+			}
+			set
+			{
+				if ((this._salida != value))
+				{
+					this._salida = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Int NOT NULL")]
+		public int total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this._total = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarKardexPorLibroResult
+	{
+		
+		private int _id_kardex;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha;
+		
+		private string _detalle;
+		
+		private int _entrada;
+		
+		private int _salida;
+		
+		private int _total;
+		
+		public CP_BuscarKardexPorLibroResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_kardex", DbType="Int NOT NULL")]
+		public int id_kardex
+		{
+			get
+			{
+				return this._id_kardex;
+			}
+			set
+			{
+				if ((this._id_kardex != value))
+				{
+					this._id_kardex = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="Date NOT NULL")]
+		public System.DateTime fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this._fecha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_detalle", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string detalle
+		{
+			get
+			{
+				return this._detalle;
+			}
+			set
+			{
+				if ((this._detalle != value))
+				{
+					this._detalle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_entrada", DbType="Int NOT NULL")]
+		public int entrada
+		{
+			get
+			{
+				return this._entrada;
+			}
+			set
+			{
+				if ((this._entrada != value))
+				{
+					this._entrada = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salida", DbType="Int NOT NULL")]
+		public int salida
+		{
+			get
+			{
+				return this._salida;
+			}
+			set
+			{
+				if ((this._salida != value))
+				{
+					this._salida = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Int NOT NULL")]
+		public int total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this._total = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarLibroResult
+	{
+		
+		private int _id_libro;
+		
+		private string _estado;
+		
+		private System.DateTime _anio_publicacion;
+		
+		private string _tipo;
+		
+		private string _nombre;
+		
+		private int _id_categoria;
+		
+		private int _id_editorial;
+		
+		private int _stock;
+		
+		public CP_BuscarLibroResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
+		public System.DateTime anio_publicacion
+		{
+			get
+			{
+				return this._anio_publicacion;
+			}
+			set
+			{
+				if ((this._anio_publicacion != value))
+				{
+					this._anio_publicacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
+		public int id_categoria
+		{
+			get
+			{
+				return this._id_categoria;
+			}
+			set
+			{
+				if ((this._id_categoria != value))
+				{
+					this._id_categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
+		public int id_editorial
+		{
+			get
+			{
+				return this._id_editorial;
+			}
+			set
+			{
+				if ((this._id_editorial != value))
+				{
+					this._id_editorial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
+		public int stock
+		{
+			get
+			{
+				return this._stock;
+			}
+			set
+			{
+				if ((this._stock != value))
+				{
+					this._stock = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarPrestamoResult
+	{
+		
+		private int _id_prestamo;
+		
+		private string _estado;
+		
+		private System.DateTime _fecha_entrega;
+		
+		private System.DateTime _fecha_tentativa;
+		
+		private System.DateTime _fecha_devolucion;
+		
+		private int _id_estudiante;
+		
+		public CP_BuscarPrestamoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					this._id_prestamo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="Date NOT NULL")]
+		public System.DateTime fecha_entrega
+		{
+			get
+			{
+				return this._fecha_entrega;
+			}
+			set
+			{
+				if ((this._fecha_entrega != value))
+				{
+					this._fecha_entrega = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="Date NOT NULL")]
+		public System.DateTime fecha_tentativa
+		{
+			get
+			{
+				return this._fecha_tentativa;
+			}
+			set
+			{
+				if ((this._fecha_tentativa != value))
+				{
+					this._fecha_tentativa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="Date NOT NULL")]
+		public System.DateTime fecha_devolucion
+		{
+			get
+			{
+				return this._fecha_devolucion;
+			}
+			set
+			{
+				if ((this._fecha_devolucion != value))
+				{
+					this._fecha_devolucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
+		public int id_estudiante
+		{
+			get
+			{
+				return this._id_estudiante;
+			}
+			set
+			{
+				if ((this._id_estudiante != value))
+				{
+					this._id_estudiante = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarEstudianteResult
+	{
+		
+		private int _id_estudiante;
+		
+		private string _cedula;
+		
+		private string _nombre;
+		
+		private string _apellido;
+		
+		private System.DateTime _fecha_nacimiento;
+		
+		private char _sexo;
+		
+		private string _estado_civil;
+		
+		private string _estado;
+		
+		public CP_BuscarEstudianteResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
+		public int id_estudiante
+		{
+			get
+			{
+				return this._id_estudiante;
+			}
+			set
+			{
+				if ((this._id_estudiante != value))
+				{
+					this._id_estudiante = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string cedula
+		{
+			get
+			{
+				return this._cedula;
+			}
+			set
+			{
+				if ((this._cedula != value))
+				{
+					this._cedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string apellido
+		{
+			get
+			{
+				return this._apellido;
+			}
+			set
+			{
+				if ((this._apellido != value))
+				{
+					this._apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_nacimiento", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_nacimiento
+		{
+			get
+			{
+				return this._fecha_nacimiento;
+			}
+			set
+			{
+				if ((this._fecha_nacimiento != value))
+				{
+					this._fecha_nacimiento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sexo", DbType="Char(1) NOT NULL")]
+		public char sexo
+		{
+			get
+			{
+				return this._sexo;
+			}
+			set
+			{
+				if ((this._sexo != value))
+				{
+					this._sexo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado_civil", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado_civil
+		{
+			get
+			{
+				return this._estado_civil;
+			}
+			set
+			{
+				if ((this._estado_civil != value))
+				{
+					this._estado_civil = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_BuscarAutorResult
+	{
+		
+		private int _id_autor;
+		
+		private string _estado;
+		
+		private string _nombre;
+		
+		private string _apellido;
+		
+		private char _sexo;
+		
+		private System.DateTime _fecha_nacimiento;
+		
+		public CP_BuscarAutorResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_autor", DbType="Int NOT NULL")]
+		public int id_autor
+		{
+			get
+			{
+				return this._id_autor;
+			}
+			set
+			{
+				if ((this._id_autor != value))
+				{
+					this._id_autor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string apellido
+		{
+			get
+			{
+				return this._apellido;
+			}
+			set
+			{
+				if ((this._apellido != value))
+				{
+					this._apellido = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sexo", DbType="Char(1) NOT NULL")]
+		public char sexo
+		{
+			get
+			{
+				return this._sexo;
+			}
+			set
+			{
+				if ((this._sexo != value))
+				{
+					this._sexo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_nacimiento", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_nacimiento
+		{
+			get
+			{
+				return this._fecha_nacimiento;
+			}
+			set
+			{
+				if ((this._fecha_nacimiento != value))
+				{
+					this._fecha_nacimiento = value;
+				}
+			}
 		}
 	}
 	
@@ -2570,6 +3924,50 @@ namespace CapaDatos
 				if ((this._fecha_nacimiento != value))
 				{
 					this._fecha_nacimiento = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarAutorLibroResult
+	{
+		
+		private int _id_autor;
+		
+		private int _id_libro;
+		
+		public CP_ListarAutorLibroResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_autor", DbType="Int NOT NULL")]
+		public int id_autor
+		{
+			get
+			{
+				return this._id_autor;
+			}
+			set
+			{
+				if ((this._id_autor != value))
+				{
+					this._id_autor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
 				}
 			}
 		}
@@ -2851,6 +4249,612 @@ namespace CapaDatos
 		}
 	}
 	
+	public partial class CP_ListarKardexResult
+	{
+		
+		private int _id_kardex;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha;
+		
+		private string _detalle;
+		
+		private int _entrada;
+		
+		private int _salida;
+		
+		private int _total;
+		
+		public CP_ListarKardexResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_kardex", DbType="Int NOT NULL")]
+		public int id_kardex
+		{
+			get
+			{
+				return this._id_kardex;
+			}
+			set
+			{
+				if ((this._id_kardex != value))
+				{
+					this._id_kardex = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="Date NOT NULL")]
+		public System.DateTime fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this._fecha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_detalle", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string detalle
+		{
+			get
+			{
+				return this._detalle;
+			}
+			set
+			{
+				if ((this._detalle != value))
+				{
+					this._detalle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_entrada", DbType="Int NOT NULL")]
+		public int entrada
+		{
+			get
+			{
+				return this._entrada;
+			}
+			set
+			{
+				if ((this._entrada != value))
+				{
+					this._entrada = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salida", DbType="Int NOT NULL")]
+		public int salida
+		{
+			get
+			{
+				return this._salida;
+			}
+			set
+			{
+				if ((this._salida != value))
+				{
+					this._salida = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Int NOT NULL")]
+		public int total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this._total = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarHistorialBajasResult
+	{
+		
+		private int _id_baja;
+		
+		private int _id_libro;
+		
+		private System.DateTime _fecha_baja;
+		
+		private string _motivo;
+		
+		private int _decremento_stock;
+		
+		public CP_ListarHistorialBajasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", DbType="Int NOT NULL")]
+		public int id_baja
+		{
+			get
+			{
+				return this._id_baja;
+			}
+			set
+			{
+				if ((this._id_baja != value))
+				{
+					this._id_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
+		public System.DateTime fecha_baja
+		{
+			get
+			{
+				return this._fecha_baja;
+			}
+			set
+			{
+				if ((this._fecha_baja != value))
+				{
+					this._fecha_baja = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
+		public string motivo
+		{
+			get
+			{
+				return this._motivo;
+			}
+			set
+			{
+				if ((this._motivo != value))
+				{
+					this._motivo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
+		public int decremento_stock
+		{
+			get
+			{
+				return this._decremento_stock;
+			}
+			set
+			{
+				if ((this._decremento_stock != value))
+				{
+					this._decremento_stock = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarLibroPersonaPersonalizadoResult
+	{
+		
+		private int _id_libro;
+		
+		private string _nombre;
+		
+		private string _tipo;
+		
+		private System.DateTime _anio_publicacion;
+		
+		private string _Categoria;
+		
+		private string _Editorial;
+		
+		private string _estado;
+		
+		public CP_ListarLibroPersonaPersonalizadoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
+		public System.DateTime anio_publicacion
+		{
+			get
+			{
+				return this._anio_publicacion;
+			}
+			set
+			{
+				if ((this._anio_publicacion != value))
+				{
+					this._anio_publicacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this._Categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Editorial", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Editorial
+		{
+			get
+			{
+				return this._Editorial;
+			}
+			set
+			{
+				if ((this._Editorial != value))
+				{
+					this._Editorial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarLibroPrestamoResult
+	{
+		
+		private int _id_prestamo;
+		
+		private int _id_libro;
+		
+		public CP_ListarLibroPrestamoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					this._id_prestamo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarLibroAutorResult
+	{
+		
+		private int _id_autor;
+		
+		private int _id_libro;
+		
+		public CP_ListarLibroAutorResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_autor", DbType="Int NOT NULL")]
+		public int id_autor
+		{
+			get
+			{
+				return this._id_autor;
+			}
+			set
+			{
+				if ((this._id_autor != value))
+				{
+					this._id_autor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarLibrosResult
+	{
+		
+		private int _id_libro;
+		
+		private string _estado;
+		
+		private System.DateTime _anio_publicacion;
+		
+		private string _tipo;
+		
+		private string _nombre;
+		
+		private int _id_categoria;
+		
+		private int _id_editorial;
+		
+		private int _stock;
+		
+		public CP_ListarLibrosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
+		public System.DateTime anio_publicacion
+		{
+			get
+			{
+				return this._anio_publicacion;
+			}
+			set
+			{
+				if ((this._anio_publicacion != value))
+				{
+					this._anio_publicacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
+		public int id_categoria
+		{
+			get
+			{
+				return this._id_categoria;
+			}
+			set
+			{
+				if ((this._id_categoria != value))
+				{
+					this._id_categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
+		public int id_editorial
+		{
+			get
+			{
+				return this._id_editorial;
+			}
+			set
+			{
+				if ((this._id_editorial != value))
+				{
+					this._id_editorial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
+		public int stock
+		{
+			get
+			{
+				return this._stock;
+			}
+			set
+			{
+				if ((this._stock != value))
+				{
+					this._stock = value;
+				}
+			}
+		}
+	}
+	
 	public partial class CP_ListarLibrosCategoriaResult
 	{
 		
@@ -2944,6 +4948,434 @@ namespace CapaDatos
 				if ((this._Editorial != value))
 				{
 					this._Editorial = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarLibrosDisponiblesResult
+	{
+		
+		private int _id_libro;
+		
+		private string _estado;
+		
+		private System.DateTime _anio_publicacion;
+		
+		private string _tipo;
+		
+		private string _nombre;
+		
+		private int _id_categoria;
+		
+		private int _id_editorial;
+		
+		private int _stock;
+		
+		public CP_ListarLibrosDisponiblesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
+		public System.DateTime anio_publicacion
+		{
+			get
+			{
+				return this._anio_publicacion;
+			}
+			set
+			{
+				if ((this._anio_publicacion != value))
+				{
+					this._anio_publicacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
+		public int id_categoria
+		{
+			get
+			{
+				return this._id_categoria;
+			}
+			set
+			{
+				if ((this._id_categoria != value))
+				{
+					this._id_categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
+		public int id_editorial
+		{
+			get
+			{
+				return this._id_editorial;
+			}
+			set
+			{
+				if ((this._id_editorial != value))
+				{
+					this._id_editorial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
+		public int stock
+		{
+			get
+			{
+				return this._stock;
+			}
+			set
+			{
+				if ((this._stock != value))
+				{
+					this._stock = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarPrestamoLibroResult
+	{
+		
+		private int _id_prestamo;
+		
+		private int _id_libro;
+		
+		public CP_ListarPrestamoLibroResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					this._id_prestamo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
+		public int id_libro
+		{
+			get
+			{
+				return this._id_libro;
+			}
+			set
+			{
+				if ((this._id_libro != value))
+				{
+					this._id_libro = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarPrestamosResult
+	{
+		
+		private int _id_prestamo;
+		
+		private string _estado;
+		
+		private System.DateTime _fecha_entrega;
+		
+		private System.DateTime _fecha_tentativa;
+		
+		private System.DateTime _fecha_devolucion;
+		
+		private int _id_estudiante;
+		
+		public CP_ListarPrestamosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					this._id_prestamo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="Date NOT NULL")]
+		public System.DateTime fecha_entrega
+		{
+			get
+			{
+				return this._fecha_entrega;
+			}
+			set
+			{
+				if ((this._fecha_entrega != value))
+				{
+					this._fecha_entrega = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="Date NOT NULL")]
+		public System.DateTime fecha_tentativa
+		{
+			get
+			{
+				return this._fecha_tentativa;
+			}
+			set
+			{
+				if ((this._fecha_tentativa != value))
+				{
+					this._fecha_tentativa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="Date NOT NULL")]
+		public System.DateTime fecha_devolucion
+		{
+			get
+			{
+				return this._fecha_devolucion;
+			}
+			set
+			{
+				if ((this._fecha_devolucion != value))
+				{
+					this._fecha_devolucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
+		public int id_estudiante
+		{
+			get
+			{
+				return this._id_estudiante;
+			}
+			set
+			{
+				if ((this._id_estudiante != value))
+				{
+					this._id_estudiante = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CP_ListarPrestamosFechaResult
+	{
+		
+		private int _id_prestamo;
+		
+		private string _estado;
+		
+		private System.DateTime _fecha_entrega;
+		
+		private System.DateTime _fecha_tentativa;
+		
+		private System.DateTime _fecha_devolucion;
+		
+		private int _id_estudiante;
+		
+		public CP_ListarPrestamosFechaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
+		public int id_prestamo
+		{
+			get
+			{
+				return this._id_prestamo;
+			}
+			set
+			{
+				if ((this._id_prestamo != value))
+				{
+					this._id_prestamo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string estado
+		{
+			get
+			{
+				return this._estado;
+			}
+			set
+			{
+				if ((this._estado != value))
+				{
+					this._estado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="Date NOT NULL")]
+		public System.DateTime fecha_entrega
+		{
+			get
+			{
+				return this._fecha_entrega;
+			}
+			set
+			{
+				if ((this._fecha_entrega != value))
+				{
+					this._fecha_entrega = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="Date NOT NULL")]
+		public System.DateTime fecha_tentativa
+		{
+			get
+			{
+				return this._fecha_tentativa;
+			}
+			set
+			{
+				if ((this._fecha_tentativa != value))
+				{
+					this._fecha_tentativa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="Date NOT NULL")]
+		public System.DateTime fecha_devolucion
+		{
+			get
+			{
+				return this._fecha_devolucion;
+			}
+			set
+			{
+				if ((this._fecha_devolucion != value))
+				{
+					this._fecha_devolucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
+		public int id_estudiante
+		{
+			get
+			{
+				return this._id_estudiante;
+			}
+			set
+			{
+				if ((this._id_estudiante != value))
+				{
+					this._id_estudiante = value;
 				}
 			}
 		}
@@ -3212,1555 +5644,6 @@ namespace CapaDatos
 				if ((this._estado != value))
 				{
 					this._estado = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarAutorLibroResult
-	{
-		
-		private int _id_autor;
-		
-		private int _id_libro;
-		
-		public CP_ListarAutorLibroResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_autor", DbType="Int NOT NULL")]
-		public int id_autor
-		{
-			get
-			{
-				return this._id_autor;
-			}
-			set
-			{
-				if ((this._id_autor != value))
-				{
-					this._id_autor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarLibroAutorResult
-	{
-		
-		private int _id_autor;
-		
-		private int _id_libro;
-		
-		public CP_ListarLibroAutorResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_autor", DbType="Int NOT NULL")]
-		public int id_autor
-		{
-			get
-			{
-				return this._id_autor;
-			}
-			set
-			{
-				if ((this._id_autor != value))
-				{
-					this._id_autor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarLibroPrestamoResult
-	{
-		
-		private int _id_prestamo;
-		
-		private int _id_libro;
-		
-		public CP_ListarLibroPrestamoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					this._id_prestamo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarLibrosResult
-	{
-		
-		private int _id_libro;
-		
-		private string _estado;
-		
-		private System.DateTime _anio_publicacion;
-		
-		private string _tipo;
-		
-		private string _nombre;
-		
-		private int _id_categoria;
-		
-		private int _id_editorial;
-		private int _stock;
-
-		
-		public CP_ListarLibrosResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
-		public System.DateTime anio_publicacion
-		{
-			get
-			{
-				return this._anio_publicacion;
-			}
-			set
-			{
-				if ((this._anio_publicacion != value))
-				{
-					this._anio_publicacion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string tipo
-		{
-			get
-			{
-				return this._tipo;
-			}
-			set
-			{
-				if ((this._tipo != value))
-				{
-					this._tipo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
-		public int id_categoria
-		{
-			get
-			{
-				return this._id_categoria;
-			}
-			set
-			{
-				if ((this._id_categoria != value))
-				{
-					this._id_categoria = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
-		public int id_editorial
-		{
-			get
-			{
-				return this._id_editorial;
-			}
-			set
-			{
-				if ((this._id_editorial != value))
-				{
-					this._id_editorial = value;
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
-		public int stock
-		{
-            get
-			{
-                return this._stock;
-            }
-            set
-			{
-                if ((this._stock != value))
-				{
-                    this._stock = value;
-                }
-            }
-        }
-	}
-	
-	public partial class CP_ListarPrestamoLibroResult
-	{
-		
-		private int _id_prestamo;
-		
-		private int _id_libro;
-		
-		public CP_ListarPrestamoLibroResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					this._id_prestamo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarPrestamosResult
-	{
-		
-		private int _id_prestamo;
-		
-		private string _estado;
-		
-		private System.DateTime _fecha_entrega;
-		
-		private System.DateTime _fecha_tentativa;
-		
-		private System.DateTime _fecha_devolucion;
-		
-		private int _id_estudiante;
-		
-		public CP_ListarPrestamosResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					this._id_prestamo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_entrega
-		{
-			get
-			{
-				return this._fecha_entrega;
-			}
-			set
-			{
-				if ((this._fecha_entrega != value))
-				{
-					this._fecha_entrega = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_tentativa
-		{
-			get
-			{
-				return this._fecha_tentativa;
-			}
-			set
-			{
-				if ((this._fecha_tentativa != value))
-				{
-					this._fecha_tentativa = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_devolucion
-		{
-			get
-			{
-				return this._fecha_devolucion;
-			}
-			set
-			{
-				if ((this._fecha_devolucion != value))
-				{
-					this._fecha_devolucion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
-		public int id_estudiante
-		{
-			get
-			{
-				return this._id_estudiante;
-			}
-			set
-			{
-				if ((this._id_estudiante != value))
-				{
-					this._id_estudiante = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarPrestamosFechaResult
-	{
-		
-		private int _id_prestamo;
-		
-		private string _estado;
-		
-		private System.DateTime _fecha_entrega;
-		
-		private System.DateTime _fecha_tentativa;
-		
-		private System.DateTime _fecha_devolucion;
-		
-		private int _id_estudiante;
-		
-		public CP_ListarPrestamosFechaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					this._id_prestamo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_entrega
-		{
-			get
-			{
-				return this._fecha_entrega;
-			}
-			set
-			{
-				if ((this._fecha_entrega != value))
-				{
-					this._fecha_entrega = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_tentativa
-		{
-			get
-			{
-				return this._fecha_tentativa;
-			}
-			set
-			{
-				if ((this._fecha_tentativa != value))
-				{
-					this._fecha_tentativa = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_devolucion
-		{
-			get
-			{
-				return this._fecha_devolucion;
-			}
-			set
-			{
-				if ((this._fecha_devolucion != value))
-				{
-					this._fecha_devolucion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
-		public int id_estudiante
-		{
-			get
-			{
-				return this._id_estudiante;
-			}
-			set
-			{
-				if ((this._id_estudiante != value))
-				{
-					this._id_estudiante = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_BuscarAutorResult
-	{
-		
-		private int _id_autor;
-		
-		private string _estado;
-		
-		private string _nombre;
-		
-		private string _apellido;
-		
-		private char _sexo;
-		
-		private System.DateTime _fecha_nacimiento;
-		
-		public CP_BuscarAutorResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_autor", DbType="Int NOT NULL")]
-		public int id_autor
-		{
-			get
-			{
-				return this._id_autor;
-			}
-			set
-			{
-				if ((this._id_autor != value))
-				{
-					this._id_autor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string apellido
-		{
-			get
-			{
-				return this._apellido;
-			}
-			set
-			{
-				if ((this._apellido != value))
-				{
-					this._apellido = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sexo", DbType="Char(1) NOT NULL")]
-		public char sexo
-		{
-			get
-			{
-				return this._sexo;
-			}
-			set
-			{
-				if ((this._sexo != value))
-				{
-					this._sexo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_nacimiento", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_nacimiento
-		{
-			get
-			{
-				return this._fecha_nacimiento;
-			}
-			set
-			{
-				if ((this._fecha_nacimiento != value))
-				{
-					this._fecha_nacimiento = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_BuscarCategoriaResult
-	{
-		
-		private int _id_categoria;
-		
-		private string _nombre;
-		
-		private string _descripcion;
-		
-		public CP_BuscarCategoriaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
-		public int id_categoria
-		{
-			get
-			{
-				return this._id_categoria;
-			}
-			set
-			{
-				if ((this._id_categoria != value))
-				{
-					this._id_categoria = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this._descripcion = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_BuscarEditorialResult
-	{
-		
-		private int _id_editorial;
-		
-		private string _nombre;
-		
-		private string _pais;
-		
-		public CP_BuscarEditorialResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
-		public int id_editorial
-		{
-			get
-			{
-				return this._id_editorial;
-			}
-			set
-			{
-				if ((this._id_editorial != value))
-				{
-					this._id_editorial = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pais", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string pais
-		{
-			get
-			{
-				return this._pais;
-			}
-			set
-			{
-				if ((this._pais != value))
-				{
-					this._pais = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_BuscarEstudianteResult
-	{
-		
-		private int _id_estudiante;
-		
-		private string _cedula;
-		
-		private string _nombre;
-		
-		private string _apellido;
-		
-		private System.DateTime _fecha_nacimiento;
-		
-		private char _sexo;
-		
-		private string _estado_civil;
-		
-		private string _estado;
-		
-		public CP_BuscarEstudianteResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
-		public int id_estudiante
-		{
-			get
-			{
-				return this._id_estudiante;
-			}
-			set
-			{
-				if ((this._id_estudiante != value))
-				{
-					this._id_estudiante = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string cedula
-		{
-			get
-			{
-				return this._cedula;
-			}
-			set
-			{
-				if ((this._cedula != value))
-				{
-					this._cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string apellido
-		{
-			get
-			{
-				return this._apellido;
-			}
-			set
-			{
-				if ((this._apellido != value))
-				{
-					this._apellido = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_nacimiento", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_nacimiento
-		{
-			get
-			{
-				return this._fecha_nacimiento;
-			}
-			set
-			{
-				if ((this._fecha_nacimiento != value))
-				{
-					this._fecha_nacimiento = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sexo", DbType="Char(1) NOT NULL")]
-		public char sexo
-		{
-			get
-			{
-				return this._sexo;
-			}
-			set
-			{
-				if ((this._sexo != value))
-				{
-					this._sexo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado_civil", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado_civil
-		{
-			get
-			{
-				return this._estado_civil;
-			}
-			set
-			{
-				if ((this._estado_civil != value))
-				{
-					this._estado_civil = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_BuscarLibroResult
-	{
-		
-		private int _id_libro;
-		
-		private string _estado;
-		
-		private System.DateTime _anio_publicacion;
-		
-		private string _tipo;
-		
-		private string _nombre;
-		
-		private int _id_categoria;
-		
-		private int _id_editorial;
-		private int _stock;
-		
-		public CP_BuscarLibroResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
-		public System.DateTime anio_publicacion
-		{
-			get
-			{
-				return this._anio_publicacion;
-			}
-			set
-			{
-				if ((this._anio_publicacion != value))
-				{
-					this._anio_publicacion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string tipo
-		{
-			get
-			{
-				return this._tipo;
-			}
-			set
-			{
-				if ((this._tipo != value))
-				{
-					this._tipo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
-		public int id_categoria
-		{
-			get
-			{
-				return this._id_categoria;
-			}
-			set
-			{
-				if ((this._id_categoria != value))
-				{
-					this._id_categoria = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
-		public int id_editorial
-		{
-			get
-			{
-				return this._id_editorial;
-			}
-			set
-			{
-				if ((this._id_editorial != value))
-				{
-					this._id_editorial = value;
-				}
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stock", DbType="Int NOT NULL")]
-		public int stock
-		{
-            get
-			{
-                return this._stock;
-            }
-            set
-			{
-                if ((this._stock != value))
-				{
-                    this._stock = value;
-                }
-            }
-        }
-	}
-	
-	public partial class CP_BuscarPrestamoResult
-	{
-		
-		private int _id_prestamo;
-		
-		private string _estado;
-		
-		private System.DateTime _fecha_entrega;
-		
-		private System.DateTime _fecha_tentativa;
-		
-		private System.DateTime _fecha_devolucion;
-		
-		private int _id_estudiante;
-		
-		public CP_BuscarPrestamoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_prestamo", DbType="Int NOT NULL")]
-		public int id_prestamo
-		{
-			get
-			{
-				return this._id_prestamo;
-			}
-			set
-			{
-				if ((this._id_prestamo != value))
-				{
-					this._id_prestamo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_entrega", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_entrega
-		{
-			get
-			{
-				return this._fecha_entrega;
-			}
-			set
-			{
-				if ((this._fecha_entrega != value))
-				{
-					this._fecha_entrega = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_tentativa", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_tentativa
-		{
-			get
-			{
-				return this._fecha_tentativa;
-			}
-			set
-			{
-				if ((this._fecha_tentativa != value))
-				{
-					this._fecha_tentativa = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_devolucion", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_devolucion
-		{
-			get
-			{
-				return this._fecha_devolucion;
-			}
-			set
-			{
-				if ((this._fecha_devolucion != value))
-				{
-					this._fecha_devolucion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_estudiante", DbType="Int NOT NULL")]
-		public int id_estudiante
-		{
-			get
-			{
-				return this._id_estudiante;
-			}
-			set
-			{
-				if ((this._id_estudiante != value))
-				{
-					this._id_estudiante = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarLibrosDisponiblesResult
-	{
-		
-		private int _id_libro;
-		
-		private string _estado;
-		
-		private System.DateTime _anio_publicacion;
-		
-		private string _tipo;
-		
-		private string _nombre;
-		
-		private int _id_categoria;
-		
-		private int _id_editorial;
-		
-		public CP_ListarLibrosDisponiblesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_estado", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string estado
-		{
-			get
-			{
-				return this._estado;
-			}
-			set
-			{
-				if ((this._estado != value))
-				{
-					this._estado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anio_publicacion", DbType="DateTime NOT NULL")]
-		public System.DateTime anio_publicacion
-		{
-			get
-			{
-				return this._anio_publicacion;
-			}
-			set
-			{
-				if ((this._anio_publicacion != value))
-				{
-					this._anio_publicacion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string tipo
-		{
-			get
-			{
-				return this._tipo;
-			}
-			set
-			{
-				if ((this._tipo != value))
-				{
-					this._tipo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categoria", DbType="Int NOT NULL")]
-		public int id_categoria
-		{
-			get
-			{
-				return this._id_categoria;
-			}
-			set
-			{
-				if ((this._id_categoria != value))
-				{
-					this._id_categoria = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_editorial", DbType="Int NOT NULL")]
-		public int id_editorial
-		{
-			get
-			{
-				return this._id_editorial;
-			}
-			set
-			{
-				if ((this._id_editorial != value))
-				{
-					this._id_editorial = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_BuscarHistorialBajaResult
-	{
-		
-		private int _id_baja;
-		
-		private int _id_libro;
-		
-		private System.DateTime _fecha_baja;
-		
-		private string _motivo;
-		
-		private int _decremento_stock;
-		
-		public CP_BuscarHistorialBajaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", DbType="Int NOT NULL")]
-		public int id_baja
-		{
-			get
-			{
-				return this._id_baja;
-			}
-			set
-			{
-				if ((this._id_baja != value))
-				{
-					this._id_baja = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_baja
-		{
-			get
-			{
-				return this._fecha_baja;
-			}
-			set
-			{
-				if ((this._fecha_baja != value))
-				{
-					this._fecha_baja = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
-		public string motivo
-		{
-			get
-			{
-				return this._motivo;
-			}
-			set
-			{
-				if ((this._motivo != value))
-				{
-					this._motivo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
-		public int decremento_stock
-		{
-			get
-			{
-				return this._decremento_stock;
-			}
-			set
-			{
-				if ((this._decremento_stock != value))
-				{
-					this._decremento_stock = value;
-				}
-			}
-		}
-	}
-	
-	public partial class CP_ListarHistorialBajasResult
-	{
-		
-		private int _id_baja;
-		
-		private int _id_libro;
-		
-		private System.DateTime _fecha_baja;
-		
-		private string _motivo;
-		
-		private int _decremento_stock;
-		
-		public CP_ListarHistorialBajasResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_baja", DbType="Int NOT NULL")]
-		public int id_baja
-		{
-			get
-			{
-				return this._id_baja;
-			}
-			set
-			{
-				if ((this._id_baja != value))
-				{
-					this._id_baja = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_libro", DbType="Int NOT NULL")]
-		public int id_libro
-		{
-			get
-			{
-				return this._id_libro;
-			}
-			set
-			{
-				if ((this._id_libro != value))
-				{
-					this._id_libro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha_baja", DbType="DateTime NOT NULL")]
-		public System.DateTime fecha_baja
-		{
-			get
-			{
-				return this._fecha_baja;
-			}
-			set
-			{
-				if ((this._fecha_baja != value))
-				{
-					this._fecha_baja = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_motivo", DbType="VarChar(255)")]
-		public string motivo
-		{
-			get
-			{
-				return this._motivo;
-			}
-			set
-			{
-				if ((this._motivo != value))
-				{
-					this._motivo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_decremento_stock", DbType="Int NOT NULL")]
-		public int decremento_stock
-		{
-			get
-			{
-				return this._decremento_stock;
-			}
-			set
-			{
-				if ((this._decremento_stock != value))
-				{
-					this._decremento_stock = value;
 				}
 			}
 		}

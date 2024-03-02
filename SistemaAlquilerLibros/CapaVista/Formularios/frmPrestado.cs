@@ -16,42 +16,23 @@ namespace capavista.Formularios
         {
             InitializeComponent();
             this.ln = new CapaLogica.Gestion.PrestamoLN();
-            this.librosNoSelec = ln.ListaLibrosDisponibles();
-            this.librosSelec = new Dictionary<int, string>();
             cargarDatos();
         }
 
         CapaLogica.Gestion.PrestamoLN ln;
-        Dictionary<int, string> librosNoSelec;
-        Dictionary<int, string> librosSelec;
 
         public void cargarDatos()
         {
-            var estudiantes = ln.ListaEstudiantes();
+            var estudiantes = ln.ListaEstudiantesPendientes();
             cbEstudiante.DataSource = new BindingSource(estudiantes, null);
             cbEstudiante.DisplayMember = "Value";
             cbEstudiante.ValueMember = "Key";
-            cargarListas();
+            cargarTabla();
         }
 
-        public void cargarListas()
+        public void cargarTabla()
         {
-            if(librosNoSelec.Count > 0)
-            {
-                lbNoSelec.DisplayMember = null;
-                lbNoSelec.ValueMember = null;
-                lbNoSelec.DataSource = new BindingSource(librosNoSelec, null);
-                lbNoSelec.DisplayMember = "Value";
-                lbNoSelec.ValueMember = "Key";
-            }
-            if(librosSelec.Count > 0)
-            {
-                lbSelec.DisplayMember = null;
-                lbSelec.ValueMember = null;
-                lbSelec.DataSource = new BindingSource(librosSelec, null);
-                lbSelec.DisplayMember = "Value";
-                lbSelec.ValueMember = "Key";
-            }
+            dataGridView1.DataSource = ln.Lista4ColumnasLibro();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -79,8 +60,7 @@ namespace capavista.Formularios
         {
             CapaEntidades.Gestion.Prestamo op = new CapaEntidades.Gestion.Prestamo();
             op.Id_prestamo = int.Parse(txtCodigo.Text);
-            op.Estado = cbEstado.Text;
-            op.Fecha_devolucion = dateFechaDevolucion.Value;
+            op.Estado = "En curso";
             op.Fecha_entrega = dateFechaEntrega.Value;
             op.Fecha_tentativa = dateFechaTentativa.Value;
             op.Id_estudiante = (int)cbEstudiante.SelectedValue;
@@ -89,56 +69,48 @@ namespace capavista.Formularios
 
         public List<int> getLibros()
         {
-            List<int> estudiantes = new List<int>();
-            foreach (var item in librosSelec)
+            List<int> lista = new List<int>();
+            foreach (DataGridViewRow item in dataGridView1.SelectedRows)
             {
-                estudiantes.Add(item.Key);
+                if (item.Cells[0].Value != null)
+                {
+                    lista.Add((int)item.Cells[0].Value);
+                }
             }
-            return estudiantes;
+            return lista;
         }
+        
 
         public void setDatos(int codigoPrestamo, List<int> codigosLibros)
         {
             txtCodigo.Text = codigoPrestamo.ToString();
+            MessageBox.Show(codigoPrestamo.ToString());
             var prestamo = ln.BuscarPrestamo(codigoPrestamo);
-            cbEstado.Text = prestamo.Estado;
-            dateFechaDevolucion.Value = prestamo.Fecha_devolucion;
             dateFechaEntrega.Value = prestamo.Fecha_entrega;
             dateFechaTentativa.Value = prestamo.Fecha_tentativa;
             cbEstudiante.SelectedValue = prestamo.Id_estudiante;
-            foreach (var item in codigosLibros)
+            int a = 0;
+            dataGridView1.ClearSelection();
+            foreach(DataGridViewRow item in dataGridView1.Rows)
             {
-                librosSelec.Add(item, librosNoSelec[item]);
-                librosNoSelec.Remove(item);
+                if (codigosLibros.Contains((int)item.Cells[0].Value))
+                {
+                    dataGridView1.Rows[a].Selected = true;
+                }
+                a++;
             }
-            cargarListas();
         }
 
         private bool validar()
         {
-            if (lbSelec.Items.Count == 0)
-            {
-                MessageBox.Show("Debe seleccionar al menos un libro");
-                return false;
-            }
             if(txtCodigo.Enabled && txtCodigo.Text == "")
             {
                 MessageBox.Show("Debe ingresar un codigo");
                 return false;
             }
-            if(cbEstado.Text == "")
-            {
-                MessageBox.Show("Debe seleccionar un estado");
-                return false;
-            }
             if(cbEstudiante.Text == "")
             {
                 MessageBox.Show("Debe seleccionar un estudiante");
-                return false;
-            }
-            if(dateFechaDevolucion.Value == null)
-            {
-                MessageBox.Show("Debe seleccionar una fecha de devolucion");
                 return false;
             }
             if(dateFechaEntrega.Value == null)
@@ -151,45 +123,30 @@ namespace capavista.Formularios
                 MessageBox.Show("Debe seleccionar una fecha tentativa");
                 return false;
             }
+            int cont = 0;
+            foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+            {
+                if (item.Cells[0].Value != null)
+                {
+                    cont++;
+                }
+            }
+            if (cont == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos un libro");
+                return false;
+            }
             return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AggLibro();
-        }
-
-        public void AggLibro()
-        {
-            if (lbNoSelec.SelectedIndex != -1)
-            {
-                librosSelec.Add((int)lbNoSelec.SelectedValue, lbNoSelec.Text);
-                librosNoSelec.Remove((int)lbNoSelec.SelectedValue);
-                cargarListas();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un libro");
-            }
-        }
-        
-        public void QuitarLibro()
-        {
-            if (lbSelec.SelectedIndex != -1)
-            {
-                librosNoSelec.Add((int)lbSelec.SelectedValue, lbSelec.Text);
-                librosSelec.Remove((int)lbSelec.SelectedValue);
-                cargarListas();
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un libro");
-            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            QuitarLibro();
+            
         }
     }
 }
